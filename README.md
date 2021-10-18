@@ -88,3 +88,103 @@ slack:
 And use that:
 
 ```console
+$ helm upgrade --install kubewatch bitnami/kubewatch --values=values-file.yml
+```
+
+#### Using kubectl:
+
+In order to run kubewatch in a Kubernetes cluster quickly, the easiest way is for you to create a [ConfigMap](https://github.com/bitnami-labs/kubewatch/blob/master/kubewatch-configmap.yaml) to hold kubewatch configuration.
+
+An example is provided at [`kubewatch-configmap.yaml`](https://github.com/bitnami-labs/kubewatch/blob/master/kubewatch-configmap.yaml), do not forget to update your own slack channel and token parameters. Alternatively, you could use secrets.
+
+Create k8s configmap:
+
+```console
+$ kubectl create -f kubewatch-configmap.yaml
+```
+
+Create the [Pod](https://github.com/bitnami-labs/kubewatch/blob/master/kubewatch.yaml) directly, or create your own deployment:
+
+```console
+$ kubectl create -f kubewatch.yaml
+```
+
+A `kubewatch` container will be created along with `kubectl` sidecar container in order to reach the API server.
+
+Once the Pod is running, you will start seeing Kubernetes events in your configured Slack channel. Here is a screenshot:
+
+![slack](./docs/slack.png)
+
+To modify what notifications you get, update the `kubewatch` ConfigMap and turn on and off (true/false) resources:
+
+```
+resource:
+  deployment: false
+  replicationcontroller: false
+  replicaset: false
+  daemonset: false
+  services: true
+  pod: true
+  job: false
+  node: false
+  clusterrole: false
+  serviceaccount: false
+  persistentvolume: false
+  namespace: false
+  secret: false
+  configmap: false
+  ingress: false
+```
+
+#### Working with RBAC
+
+Kubernetes Engine clusters running versions 1.6 or higher introduced Role-Based Access Control (RBAC). We can create `ServiceAccount` for it to work with RBAC.
+
+```console
+$ kubectl create -f kubewatch-service-account.yaml
+```
+
+If you do not have permission to create it, you need to become an admin first. For example, in GKE you would run:
+
+```
+$ kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=REPLACE_EMAIL_HERE
+```
+
+Edit `kubewatch.yaml`, and create a new field under `spec` with `serviceAccountName: kubewatch`, you can achieve this by running:
+
+```console
+$ sed -i '/spec:/a\ \ serviceAccountName: kubewatch' kubewatch.yaml
+```
+
+Then just create `pod` as usual with:
+
+```console
+$ kubectl create -f kubewatch.yaml
+```
+
+### Local Installation
+#### Using go package installer:
+
+```console
+# Download and install kubewatch
+$ go get -u github.com/bitnami-labs/kubewatch
+
+# Configure the notification channel
+$ kubewatch config add slack --channel <slack_channel> --token <slack_token>
+
+# Add resources to be watched
+$ kubewatch resource add --po --svc
+INFO[0000] resource svc configured
+INFO[0000] resource po configured
+
+# start kubewatch server
+$ kubewatch
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-service
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-pod
+INFO[0000] Processing add to service: default/kubernetes  pkg=kubewatch-service
+INFO[0000] Processing add to service: kube-system/tiller-deploy  pkg=kubewatch-service
+INFO[0000] Processing add to pod: kube-system/tiller-deploy-69ffbf64bc-h8zxm  pkg=kubewatch-pod
+INFO[0000] Kubewatch controller synced and ready         pkg=kubewatch-service
+INFO[0000] Kubewatch controller synced and ready         pkg=kubewatch-pod
+
+```
