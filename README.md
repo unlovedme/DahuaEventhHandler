@@ -188,3 +188,96 @@ INFO[0000] Kubewatch controller synced and ready         pkg=kubewatch-service
 INFO[0000] Kubewatch controller synced and ready         pkg=kubewatch-pod
 
 ```
+#### Using Docker:
+
+To Run Kubewatch Container interactively, place the config file in `$HOME/.kubewatch.yaml` location and use the following command.
+
+```
+docker run --rm -it --network host -v $HOME/.kubewatch.yaml:/root/.kubewatch.yaml -v $HOME/.kube/config:/opt/bitnami/kubewatch/.kube/config --name <container-name> bitnami/kubewatch
+```
+
+Example:
+
+```
+$ docker run --rm -it --network host -v $HOME/.kubewatch.yaml:/root/.kubewatch.yaml -v $HOME/.kube/config:/opt/bitnami/kubewatch/.kube/config --name kubewatch-app bitnami/kubewatch
+
+==> Writing config file...
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-service
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-pod
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-deployment
+INFO[0000] Starting kubewatch controller                 pkg=kubewatch-namespace
+INFO[0000] Processing add to namespace: kube-node-lease  pkg=kubewatch-namespace
+INFO[0000] Processing add to namespace: kube-public      pkg=kubewatch-namespace
+INFO[0000] Processing add to namespace: kube-system      pkg=kubewatch-namespace
+INFO[0000] Processing add to namespace: default          pkg=kubewatch-namespace
+....
+```
+
+To Demonise Kubewatch container use
+
+```
+$ docker run --rm -d --network host -v $HOME/.kubewatch.yaml:/root/.kubewatch.yaml -v $HOME/.kube/config:/opt/bitnami/kubewatch/.kube/config --name kubewatch-app bitnami/kubewatch
+```
+
+# Configure
+
+Kubewatch supports `config` command for configuration. Config file will be saved at `$HOME/.kubewatch.yaml`
+
+```
+$ kubewatch config -h
+
+config command allows admin setup his own configuration for running kubewatch
+
+Usage:
+  kubewatch config [flags]
+  kubewatch config [command]
+
+Available Commands:
+  add         add webhook config to .kubewatch.yaml
+  test        test handler config present in .kubewatch.yaml
+  view        view .kubewatch.yaml
+
+Flags:
+  -h, --help   help for config
+
+Use "kubewatch config [command] --help" for more information about a command.
+```
+### Example:
+
+### slack:
+
+- Create a [slack Bot](https://my.slack.com/services/new/bot)
+
+- Edit the Bot to customize its name, icon and retrieve the API token (it starts with `xoxb-`).
+
+- Invite the Bot into your channel by typing: `/invite @name_of_your_bot` in the Slack message area.
+
+- Add Api token to kubewatch config using the following steps
+
+  ```console
+  $ kubewatch config add slack --channel <slack_channel> --token <slack_token>
+  ```
+  You have an altenative choice to set your SLACK token, channel via environment variables:
+
+  ```console
+  $ export KW_SLACK_TOKEN='XXXXXXXXXXXXXXXX'
+  $ export KW_SLACK_CHANNEL='#channel_name'
+  ```
+
+### flock:
+
+- Create a [flock bot](https://docs.flock.com/display/flockos/Bots).
+
+- Add flock webhook url to config using the following command.
+  ```console
+  $ kubewatch config add flock --url <flock_webhook_url>
+  ```
+  You have an altenative choice to set your FLOCK URL
+
+  ```console
+  $ export KW_FLOCK_URL='https://api.flock.com/hooks/sendMessage/XXXXXXXX'
+  ```
+
+## Testing Config
+
+To test the handler config by send test messages use the following command.
