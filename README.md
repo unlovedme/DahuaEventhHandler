@@ -389,3 +389,77 @@ Use "kubewatch resource [command] --help" for more information about a command.
 $ kubewatch resource add -h
 
 adds specific resources to be watched
+
+Usage:
+  kubewatch resource add [flags]
+
+Flags:
+  -h, --help   help for add
+
+Global Flags:
+      --clusterrole   watch for cluster roles
+      --cm            watch for plain configmaps
+      --deploy        watch for deployments
+      --ds            watch for daemonsets
+      --ing           watch for ingresses
+      --job           watch for jobs
+      --node          watch for Nodes
+      --ns            watch for namespaces
+      --po            watch for pods
+      --pv            watch for persistent volumes
+      --rc            watch for replication controllers
+      --rs            watch for replicasets
+      --sa            watch for service accounts
+      --secret        watch for plain secrets
+      --svc           watch for services
+
+```
+
+### Example:
+
+```console
+# rc, po and svc will be watched
+$ kubewatch resource add --rc --po --svc
+
+# rc, po and svc will be stopped from being watched
+$ kubewatch resource remove --rc --po --svc
+```
+
+# Build
+
+### Using go
+
+Clone the repository anywhere:
+```console
+$ git clone https://github.com/bitnami-labs/kubewatch.git
+$ cd kubewatch
+$ go build
+```
+or
+
+You can also use the Makefile directly:
+
+```console
+$ make build
+```
+
+#### Prerequisites
+
+- You need to have [Go](http://golang.org) (v1.5 or later)  installed. Make sure to set `$GOPATH`
+
+
+### Using Docker
+
+```console
+$ make docker-image
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+kubewatch           latest              919896d3cd90        3 minutes ago       27.9MB
+```
+#### Prerequisites
+
+- you need to have [docker](https://docs.docker.com/) installed.
+
+# Contribution
+
+Refer to the [contribution guidelines](docs/CONTRIBUTION.md) to get started.
