@@ -281,3 +281,111 @@ Use "kubewatch config [command] --help" for more information about a command.
 ## Testing Config
 
 To test the handler config by send test messages use the following command.
+```
+$ kubewatch config test -h
+
+Tests handler configs present in .kubewatch.yaml by sending test messages
+
+Usage:
+  kubewatch config test [flags]
+
+Flags:
+  -h, --help   help for test
+```
+
+#### Example:
+
+```
+$ kubewatch config test
+
+Testing Handler configs from .kubewatch.yaml
+2019/06/03 12:29:23 Message successfully sent to channel ABCD at 1559545162.000100
+```
+
+## Viewing config
+To view the entire config file `$HOME/.kubewatch.yaml` use the following command.
+```
+$ kubewatch config view
+Contents of .kubewatch.yaml
+
+handler:
+  slack:
+    token: xoxb-xxxxx-yyyy-zzz
+    channel: kube-watch
+  hipchat:
+    token: ""
+    room: ""
+    url: ""
+  mattermost:
+    channel: ""
+    url: ""
+    username: ""
+  flock:
+    url: ""
+  webhook:
+    url: ""
+resource:
+  deployment: false
+  replicationcontroller: false
+  replicaset: false
+  daemonset: false
+  services: false
+  pod: true
+  job: false
+  node: false
+  clusterrole: false
+  serviceaccount: false
+  persistentvolume: false
+  namespace: false
+  secret: false
+  configmap: false
+  ingress: false
+namespace: ""
+
+```
+
+
+## Resources
+
+To manage the resources being watched, use the following command, changes will be saved to `$HOME/.kubewatch.yaml`.
+
+```
+$ kubewatch resource -h
+
+manage resources to be watched
+
+Usage:
+  kubewatch resource [flags]
+  kubewatch resource [command]
+
+Available Commands:
+  add         adds specific resources to be watched
+  remove      remove specific resources being watched
+
+Flags:
+      --clusterrole   watch for cluster roles
+      --cm            watch for plain configmaps
+      --deploy        watch for deployments
+      --ds            watch for daemonsets
+  -h, --help          help for resource
+      --ing           watch for ingresses
+      --job           watch for jobs
+      --node          watch for Nodes
+      --ns            watch for namespaces
+      --po            watch for pods
+      --pv            watch for persistent volumes
+      --rc            watch for replication controllers
+      --rs            watch for replicasets
+      --sa            watch for service accounts
+      --secret        watch for plain secrets
+      --svc           watch for services
+
+Use "kubewatch resource [command] --help" for more information about a command.
+
+```
+
+### Add/Remove resource:
+```
+$ kubewatch resource add -h
+
+adds specific resources to be watched
