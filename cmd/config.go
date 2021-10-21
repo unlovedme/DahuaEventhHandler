@@ -22,4 +22,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/bi
+	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/bitnami-labs/kubewatch/pkg/client"
+	"github.com/bitnami-labs/kubewatch/pkg/event"
+	"g
