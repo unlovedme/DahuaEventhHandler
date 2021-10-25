@@ -36,4 +36,10 @@ var configCmd = &cobra.Command{
 	Use:   "config",
 	Short: "modify kubewatch configuration",
 	Long: `
-config command allows configuration of ~/.kubewatch.yaml for ru
+config command allows configuration of ~/.kubewatch.yaml for running kubewatch`,
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var configAddCmd = &cobra.Command{
