@@ -43,3 +43,8 @@ config command allows configuration of ~/.kubewatch.yaml for running kubewatch`,
 }
 
 var configAddCmd = &cobra.Command{
+	Use:   "add",
+	Short: "add webhook config to ~/.kubewatch.yaml",
+	Long: `
+Adds webhook config to ~/.kubewatch.yaml`,
+	Run: func(c
