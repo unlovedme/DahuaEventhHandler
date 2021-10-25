@@ -47,4 +47,10 @@ var configAddCmd = &cobra.Command{
 	Short: "add webhook config to ~/.kubewatch.yaml",
 	Long: `
 Adds webhook config to ~/.kubewatch.yaml`,
-	Run: func(c
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Help()
+	},
+}
+
+var configTestCmd = &cobra.Command{
+	Use:   "te
