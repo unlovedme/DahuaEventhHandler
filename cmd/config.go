@@ -31,3 +31,7 @@ import (
 
 const kubewatchConfigFile = ".kubewatch.yaml"
 
+// configCmd represents the config command
+var configCmd = &cobra.Command{
+	Use:   "config",
+	Short: "modify kube
