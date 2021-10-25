@@ -25,4 +25,9 @@ import (
 	"github.com/bitnami-labs/kubewatch/config"
 	"github.com/bitnami-labs/kubewatch/pkg/client"
 	"github.com/bitnami-labs/kubewatch/pkg/event"
-	"g
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+)
+
+const kubewatchConfigFile = ".kubewatch.yaml"
+
