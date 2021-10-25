@@ -53,4 +53,7 @@ Adds webhook config to ~/.kubewatch.yaml`,
 }
 
 var configTestCmd = &cobra.Command{
-	Use:   "te
+	Use:   "test",
+	Short: "test handler config present in ~/.kubewatch.yaml",
+	Long: `
+Tests handler configs present in ~/.kubewatch.yaml
