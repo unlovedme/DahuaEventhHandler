@@ -34,4 +34,6 @@ const kubewatchConfigFile = ".kubewatch.yaml"
 // configCmd represents the config command
 var configCmd = &cobra.Command{
 	Use:   "config",
-	Short: "modify kube
+	Short: "modify kubewatch configuration",
+	Long: `
+config command allows configuration of ~/.kubewatch.yaml for ru
