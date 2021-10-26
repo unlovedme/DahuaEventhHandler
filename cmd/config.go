@@ -56,4 +56,6 @@ var configTestCmd = &cobra.Command{
 	Use:   "test",
 	Short: "test handler config present in ~/.kubewatch.yaml",
 	Long: `
-Tests handler configs present in ~/.kubewatch.yaml
+Tests handler configs present in ~/.kubewatch.yaml by sending test messages`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Testing Hand
