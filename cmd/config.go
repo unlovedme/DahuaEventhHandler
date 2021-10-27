@@ -63,4 +63,7 @@ Tests handler configs present in ~/.kubewatch.yaml by sending test messages`,
 		if err != nil {
 			logrus.Fatal(err)
 		}
-		eventHandle
+		eventHandler := client.ParseEventHandler(conf)
+		e := event.Event{
+			Namespace: "testNamespace",
+			Name:      "testResource",
