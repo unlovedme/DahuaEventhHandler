@@ -58,4 +58,9 @@ var configTestCmd = &cobra.Command{
 	Long: `
 Tests handler configs present in ~/.kubewatch.yaml by sending test messages`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Testing Hand
+		fmt.Println("Testing Handler configs from .kubewatch.yaml")
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+		eventHandle
