@@ -67,3 +67,7 @@ Tests handler configs present in ~/.kubewatch.yaml by sending test messages`,
 		e := event.Event{
 			Namespace: "testNamespace",
 			Name:      "testResource",
+			Kind:      "testKind",
+			Component: "testComponent",
+			Host:      "testHost",
+			Reason:    "Tested",
