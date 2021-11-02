@@ -82,4 +82,11 @@ var configSampleCmd = &cobra.Command{
 	Short: "Show a sample config file",
 	Long: `
 Print a sample config file which can be put in ~/.kubewatch.yaml`,
-	Run: func(cmd *cobra.Command, args []
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Print(config.ConfigSample)
+	},
+}
+
+var configViewCmd = &cobra.Command{
+	Use:   "view",
+	Short: "view ~/.kubewa
