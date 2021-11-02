@@ -71,3 +71,12 @@ Tests handler configs present in ~/.kubewatch.yaml by sending test messages`,
 			Component: "testComponent",
 			Host:      "testHost",
 			Reason:    "Tested",
+			Status:    "Normal",
+		}
+		eventHandler.Handle(e)
+	},
+}
+
+var configSampleCmd = &cobra.Command{
+	Use:   "sample",
+	Short: "Show a sampl
