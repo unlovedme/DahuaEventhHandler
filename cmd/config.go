@@ -89,4 +89,7 @@ Print a sample config file which can be put in ~/.kubewatch.yaml`,
 
 var configViewCmd = &cobra.Command{
 	Use:   "view",
-	Short: "view ~/.kubewa
+	Short: "view ~/.kubewatch.yaml",
+	Long: `
+Display the contents of the contents of ~/.kubewatch.yaml`,
+	Run: func(cmd *cobra.Command, args []s
