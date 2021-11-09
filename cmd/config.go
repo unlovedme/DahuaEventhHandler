@@ -92,4 +92,6 @@ var configViewCmd = &cobra.Command{
 	Short: "view ~/.kubewatch.yaml",
 	Long: `
 Display the contents of the contents of ~/.kubewatch.yaml`,
-	Run: func(cmd *cobra.Command, args []s
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Fprintln(os.Stderr, "Contents of ~/.kubewatch.yaml")
+		configFile, err := ioutil.ReadFile(filepat
