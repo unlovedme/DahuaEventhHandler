@@ -94,4 +94,7 @@ var configViewCmd = &cobra.Command{
 Display the contents of the contents of ~/.kubewatch.yaml`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Fprintln(os.Stderr, "Contents of ~/.kubewatch.yaml")
-		configFile, err := ioutil.ReadFile(filepat
+		configFile, err := ioutil.ReadFile(filepath.Join(os.Getenv("HOME"), kubewatchConfigFile))
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%v\n", err)
+			os.Ex
