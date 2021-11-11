@@ -106,3 +106,11 @@ Display the contents of the contents of ~/.kubewatch.yaml`,
 func init() {
 	RootCmd.AddCommand(configCmd)
 	configCmd.AddCommand(
+		configAddCmd,
+		configTestCmd,
+		configSampleCmd,
+		configViewCmd,
+	)
+
+	configAddCmd.AddCommand(
+		slackConf
