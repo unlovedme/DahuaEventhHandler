@@ -97,4 +97,12 @@ Display the contents of the contents of ~/.kubewatch.yaml`,
 		configFile, err := ioutil.ReadFile(filepath.Join(os.Getenv("HOME"), kubewatchConfigFile))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "%v\n", err)
-			os.Ex
+			os.Exit(1)
+		}
+		fmt.Print(string(configFile))
+	},
+}
+
+func init() {
+	RootCmd.AddCommand(configCmd)
+	configCmd.AddCommand(
