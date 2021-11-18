@@ -22,4 +22,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// flockConfigCmd r
+// flockConfigCmd represents the flock subcommand
+var flockConfigCmd = &cobra.Command{
+	Use:   "flock",
+	Short: "specific flock configur
