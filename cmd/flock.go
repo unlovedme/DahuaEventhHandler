@@ -25,4 +25,7 @@ import (
 // flockConfigCmd represents the flock subcommand
 var flockConfigCmd = &cobra.Command{
 	Use:   "flock",
-	Short: "specific flock configur
+	Short: "specific flock configuration",
+	Long:  `specific flock configuration`,
+	Run: func(cmd *cobra.Command, args []string) {
+		conf
