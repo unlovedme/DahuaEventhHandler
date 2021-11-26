@@ -28,4 +28,10 @@ var flockConfigCmd = &cobra.Command{
 	Short: "specific flock configuration",
 	Long:  `specific flock configuration`,
 	Run: func(cmd *cobra.Command, args []string) {
-		conf
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		url, err := cmd.Flags().GetString("url")
+		if
