@@ -34,4 +34,12 @@ var flockConfigCmd = &cobra.Command{
 		}
 
 		url, err := cmd.Flags().GetString("url")
-		if
+		if err == nil {
+			if len(url) > 0 {
+				conf.Handler.Flock.Url = url
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+
+		
