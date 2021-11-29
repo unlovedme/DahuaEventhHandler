@@ -1,3 +1,4 @@
+
 /*
 Copyright 2016 Skippbox, Ltd.
 
@@ -22,21 +23,29 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// flockConfigCmd represents the flock subcommand
-var flockConfigCmd = &cobra.Command{
-	Use:   "flock",
-	Short: "specific flock configuration",
-	Long:  `specific flock configuration`,
+// hipchatConfigCmd represents the hipchat subcommand
+var hipchatConfigCmd = &cobra.Command{
+	Use:   "hipchat",
+	Short: "specific hipchat configuration",
+	Long:  `specific hipchat configuration`,
 	Run: func(cmd *cobra.Command, args []string) {
 		conf, err := config.New()
 		if err != nil {
 			logrus.Fatal(err)
 		}
 
-		url, err := cmd.Flags().GetString("url")
+		token, err := cmd.Flags().GetString("token")
 		if err == nil {
-			if len(url) > 0 {
-				conf.Handler.Flock.Url = url
+			if len(token) > 0 {
+				conf.Handler.Hipchat.Token = token
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+		room, err := cmd.Flags().GetString("room")
+		if err == nil {
+			if len(room) > 0 {
+				conf.Handler.Hipchat.Room = room
 			}
 		} else {
 			logrus.Fatal(err)
@@ -49,5 +58,7 @@ var flockConfigCmd = &cobra.Command{
 }
 
 func init() {
-	flockConfigCmd.Flags().StringP("url", "u", "", "Specify Flock url")
+	hipchatConfigCmd.Flags().StringP("room", "r", "", "Specify hipchat room")
+	hipchatConfigCmd.Flags().StringP("token", "t", "", "Specify hipchat token")
+	hipchatConfigCmd.Flags().StringP("url", "u", "", "Specify hipchat server url")
 }
