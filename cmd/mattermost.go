@@ -22,4 +22,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// mattermo
+// mattermostConfigCmd represents the mattermost subcommand
+var mattermostConfigCmd = &cobra.Command{
+	Use:   "mattermo
