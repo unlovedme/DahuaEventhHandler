@@ -33,4 +33,7 @@ var mattermostConfigCmd = &cobra.Command{
 			logrus.Fatal(err)
 		}
 
-		channel
+		channel, err := cmd.Flags().GetString("channel")
+		if err == nil {
+			if len(channel) > 0 {
+				conf.Handler.Mattermost.Chan
