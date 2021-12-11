@@ -27,4 +27,10 @@ var mattermostConfigCmd = &cobra.Command{
 	Use:   "mattermost",
 	Short: "specific mattermost configuration",
 	Long:  `specific mattermost configuration`,
-	Run: f
+	Run: func(cmd *cobra.Command, args []string) {
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		channel
