@@ -24,4 +24,7 @@ import (
 
 // mattermostConfigCmd represents the mattermost subcommand
 var mattermostConfigCmd = &cobra.Command{
-	Use:   "mattermo
+	Use:   "mattermost",
+	Short: "specific mattermost configuration",
+	Long:  `specific mattermost configuration`,
+	Run: f
