@@ -36,4 +36,12 @@ var mattermostConfigCmd = &cobra.Command{
 		channel, err := cmd.Flags().GetString("channel")
 		if err == nil {
 			if len(channel) > 0 {
-				conf.Handler.Mattermost.Chan
+				conf.Handler.Mattermost.Channel = channel
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+
+		url, err := cmd.Flags().GetString("url")
+		if err == nil {
+			if len(url) > 0 
