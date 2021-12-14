@@ -44,4 +44,11 @@ var mattermostConfigCmd = &cobra.Command{
 
 		url, err := cmd.Flags().GetString("url")
 		if err == nil {
-			if len(url) > 0 
+			if len(url) > 0 {
+				conf.Handler.Mattermost.Url = url
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+
+		username, err := cmd.Flags().GetStrin
