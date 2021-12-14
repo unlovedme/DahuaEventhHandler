@@ -68,4 +68,5 @@ var mattermostConfigCmd = &cobra.Command{
 
 func init() {
 	mattermostConfigCmd.Flags().StringP("channel", "c", "", "Specify Mattermost channel")
-	mattermostConfigCmd.Flags().StringP("url
+	mattermostConfigCmd.Flags().StringP("url", "u", "", "Specify Mattermost url")
+	mattermostConfigCmd.Flags().StringP("username", "n", "", "Spec
