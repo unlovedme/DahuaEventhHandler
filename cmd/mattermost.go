@@ -56,4 +56,15 @@ var mattermostConfigCmd = &cobra.Command{
 			if len(url) > 0 {
 				conf.Handler.Mattermost.Username = username
 			}
-		} 
+		} else {
+			logrus.Fatal(err)
+		}
+
+		if err = conf.Write(); err != nil {
+			logrus.Fatal(err)
+		}
+	},
+}
+
+func init() {
+	mattermostConf
