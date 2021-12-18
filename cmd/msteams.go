@@ -18,4 +18,9 @@ package cmd
 
 import (
 	"github.com/bitnami-labs/kubewatch/config"
-	"github.com
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+)
+
+// msteamsConfigCmd represents the msteams subcommand
+var
