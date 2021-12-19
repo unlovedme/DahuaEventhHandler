@@ -49,4 +49,5 @@ var msteamsConfigCmd = &cobra.Command{
 }
 
 func init() {
-	msteamsConfigCmd.Flags().String
+	msteamsConfigCmd.Flags().StringP("webhookurl", "w", "", "Specify MS Teams webhook URL")
+}
