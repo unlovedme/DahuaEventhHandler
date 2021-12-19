@@ -23,4 +23,7 @@ import (
 )
 
 // msteamsConfigCmd represents the msteams subcommand
-var
+var msteamsConfigCmd = &cobra.Command{
+	Use:   "MS Teams FLAG",
+	Short: "specific MS Teams configuration",
+	Long:  `s
