@@ -29,4 +29,10 @@ var msteamsConfigCmd = &cobra.Command{
 	Long:  `specific MS Teams configuration`,
 	Run: func(cmd *cobra.Command, args []string) {
 		conf, err := config.New()
-		if
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		webhookURL, err := cmd.Flags().GetString("webhookurl")
+		if err == nil {
+			if len(webhook
