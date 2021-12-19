@@ -35,4 +35,11 @@ var msteamsConfigCmd = &cobra.Command{
 
 		webhookURL, err := cmd.Flags().GetString("webhookurl")
 		if err == nil {
-			if len(webhook
+			if len(webhookURL) > 0 {
+				conf.Handler.MSTeams.WebhookURL = webhookURL
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+
+		if err
