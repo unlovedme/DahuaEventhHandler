@@ -26,4 +26,7 @@ import (
 var msteamsConfigCmd = &cobra.Command{
 	Use:   "MS Teams FLAG",
 	Short: "specific MS Teams configuration",
-	Long:  `s
+	Long:  `specific MS Teams configuration`,
+	Run: func(cmd *cobra.Command, args []string) {
+		conf, err := config.New()
+		if
