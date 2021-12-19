@@ -42,4 +42,11 @@ var msteamsConfigCmd = &cobra.Command{
 			logrus.Fatal(err)
 		}
 
-		if err
+		if err = conf.Write(); err != nil {
+			logrus.Fatal(err)
+		}
+	},
+}
+
+func init() {
+	msteamsConfigCmd.Flags().String
