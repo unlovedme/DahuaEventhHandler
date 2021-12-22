@@ -26,4 +26,9 @@ import (
 var resourceConfigCmd = &cobra.Command{
 	Use:   "resource",
 	Short: "manage resources to be watched",
-	Long: 
+	Long: `
+manage resources to be watched`,
+	Run: func(cmd *cobra.Command, args []string) {
+
+		// warn for too few arguments
+		if
