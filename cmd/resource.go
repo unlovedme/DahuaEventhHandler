@@ -22,4 +22,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// resourceConfigCmd represents the resourc
+// resourceConfigCmd represents the resource subcommand
+var resourceConfigCmd = &cobra.Command{
+	Use:   "resource",
+	Short: "manage resources to be watched",
+	Long: 
