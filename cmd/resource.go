@@ -31,4 +31,5 @@ manage resources to be watched`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// warn for too few arguments
-		if
+		if len(args) < 2 {
+			logrus.Warn("Too few arguments to Command \"resource\".\nMinimum 2 arguments required: subc
