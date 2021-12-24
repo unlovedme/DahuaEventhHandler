@@ -32,4 +32,11 @@ manage resources to be watched`,
 
 		// warn for too few arguments
 		if len(args) < 2 {
-			logrus.Warn("Too few arguments to Command \"resource\".\nMinimum 2 arguments required: subc
+			logrus.Warn("Too few arguments to Command \"resource\".\nMinimum 2 arguments required: subcommand, resource flags")
+		}
+		// display help
+		cmd.Help()
+	},
+}
+
+// resourceConfigAddCmd represen
