@@ -39,4 +39,7 @@ manage resources to be watched`,
 	},
 }
 
-// resourceConfigAddCmd represen
+// resourceConfigAddCmd represents the resource add subcommand
+var resourceConfigAddCmd = &cobra.Command{
+	Use:   "add",
+	Short: "adds spec
