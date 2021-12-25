@@ -42,4 +42,7 @@ manage resources to be watched`,
 // resourceConfigAddCmd represents the resource add subcommand
 var resourceConfigAddCmd = &cobra.Command{
 	Use:   "add",
-	Short: "adds spec
+	Short: "adds specific resources to be watched",
+	Long: `
+adds specific resources to be watched`,
+	Run: func(cmd *cobra.Command, args []strin
