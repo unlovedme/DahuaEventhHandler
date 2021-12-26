@@ -73,4 +73,5 @@ remove specific resources being watched`,
 	},
 }
 
-// c
+// configures resource in config based on operation add/remove
+func configureResource(operation string, cmd *cobra.C
