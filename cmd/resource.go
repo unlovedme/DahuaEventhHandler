@@ -52,4 +52,9 @@ adds specific resources to be watched`,
 		}
 
 		// add resource to config
-		configureResourc
+		configureResource("add", cmd, conf)
+	},
+}
+
+// resourceConfigRemoveCmd represents the resource remove subcommand
+var re
