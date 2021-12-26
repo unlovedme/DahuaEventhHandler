@@ -57,4 +57,8 @@ adds specific resources to be watched`,
 }
 
 // resourceConfigRemoveCmd represents the resource remove subcommand
-var re
+var resourceConfigRemoveCmd = &cobra.Command{
+	Use:   "remove",
+	Short: "remove specific resources being watched",
+	Long: `
+remove 
