@@ -74,4 +74,9 @@ remove specific resources being watched`,
 }
 
 // configures resource in config based on operation add/remove
-func configureResource(operation string, cmd *cobra.C
+func configureResource(operation string, cmd *cobra.Command, conf *config.Config) {
+
+	// flags struct
+	flags := []struct {
+		resourceStr     string
+		resourceToWa
