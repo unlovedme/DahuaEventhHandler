@@ -64,4 +64,13 @@ var resourceConfigRemoveCmd = &cobra.Command{
 remove specific resources being watched`,
 	Run: func(cmd *cobra.Command, args []string) {
 		conf, err := config.New()
-		if e
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		// remove resource from config
+		configureResource("remove", cmd, conf)
+	},
+}
+
+// c
