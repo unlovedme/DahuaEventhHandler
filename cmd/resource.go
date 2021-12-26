@@ -45,4 +45,11 @@ var resourceConfigAddCmd = &cobra.Command{
 	Short: "adds specific resources to be watched",
 	Long: `
 adds specific resources to be watched`,
-	Run: func(cmd *cobra.Command, args []strin
+	Run: func(cmd *cobra.Command, args []string) {
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		// add resource to config
+		configureResourc
