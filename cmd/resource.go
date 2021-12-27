@@ -79,4 +79,12 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 	// flags struct
 	flags := []struct {
 		resourceStr     string
-		resourceToWa
+		resourceToWatch *bool
+	}{
+		{
+			"svc",
+			&conf.Resource.Services,
+		},
+		{
+			"deploy",
+			&conf.Resource.D
