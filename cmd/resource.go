@@ -87,4 +87,15 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		},
 		{
 			"deploy",
-			&conf.Resource.D
+			&conf.Resource.Deployment,
+		},
+		{
+			"po",
+			&conf.Resource.Pod,
+		},
+		{
+			"rs",
+			&conf.Resource.ReplicaSet,
+		},
+		{
+			"rc",
