@@ -99,3 +99,12 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		},
 		{
 			"rc",
+			&conf.Resource.ReplicationController,
+		},
+		{
+			"ns",
+			&conf.Resource.Namespace,
+		},
+		{
+			"job",
+			&conf.Reso
