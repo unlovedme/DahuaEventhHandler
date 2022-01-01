@@ -116,4 +116,14 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		{
 			"ds",
 			&conf.Resource.DaemonSet,
-		
+		},
+		{
+			"secret",
+			&conf.Resource.Secret,
+		},
+		{
+			"cm",
+			&conf.Resource.ConfigMap,
+		},
+		{
+			"ing",
