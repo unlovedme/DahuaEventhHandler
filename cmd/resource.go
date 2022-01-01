@@ -127,3 +127,13 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		},
 		{
 			"ing",
+			&conf.Resource.Ingress,
+		},
+		{
+			"node",
+			&conf.Resource.Node,
+		},
+		{
+			"clusterrole",
+			&conf.Resource.ClusterRole,
+	
