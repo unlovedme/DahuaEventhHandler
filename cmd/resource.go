@@ -107,4 +107,13 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		},
 		{
 			"job",
-			&conf.Reso
+			&conf.Resource.Job,
+		},
+		{
+			"pv",
+			&conf.Resource.PersistentVolume,
+		},
+		{
+			"ds",
+			&conf.Resource.DaemonSet,
+		
