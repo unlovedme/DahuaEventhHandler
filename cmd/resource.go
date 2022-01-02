@@ -136,4 +136,13 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 		{
 			"clusterrole",
 			&conf.Resource.ClusterRole,
-	
+		},
+		{
+			"sa",
+			&conf.Resource.ServiceAccount,
+		},
+	}
+
+	for _, flag := range flags {
+		b, err := cmd.Flags().GetBool(flag.resourceStr)
+		if err
