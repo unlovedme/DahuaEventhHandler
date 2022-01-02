@@ -145,4 +145,9 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 
 	for _, flag := range flags {
 		b, err := cmd.Flags().GetBool(flag.resourceStr)
-		if err
+		if err == nil {
+			if b {
+				switch operation {
+				case "add":
+					*flag.resourceToWatch = true
+					logrus.Infof("resource
