@@ -174,4 +174,5 @@ func init() {
 	)
 	// Add resource object flags as PersistentFlags to resourceConfigCmd
 	resourceConfigCmd.PersistentFlags().Bool("svc", false, "watch for services")
-	resourceConfigCmd.Persist
+	resourceConfigCmd.PersistentFlags().Bool("deploy", false, "watch for deployments")
+	resourceConfigCmd.PersistentFlags().Bool("po", false, "watch
