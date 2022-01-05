@@ -162,3 +162,11 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 	}
 
 	if err := conf.Write(); err != nil {
+		logrus.Fatal(err)
+	}
+}
+
+func init() {
+	RootCmd.AddCommand(resourceConfigCmd)
+	resourceConfigCmd.AddCommand(
+		resourceConfigAd
