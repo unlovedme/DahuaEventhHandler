@@ -153,4 +153,12 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 					logrus.Infof("resource %s configured", flag.resourceStr)
 				case "remove":
 					*flag.resourceToWatch = false
-					logrus.Infof("resource %s removed", f
+					logrus.Infof("resource %s removed", flag.resourceStr)
+				}
+			}
+		} else {
+			logrus.Fatal(flag.resourceStr, err)
+		}
+	}
+
+	if err := conf.Write(); err != nil {
