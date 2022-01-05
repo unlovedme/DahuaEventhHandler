@@ -172,4 +172,6 @@ func init() {
 		resourceConfigAddCmd,
 		resourceConfigRemoveCmd,
 	)
-	// Add resource object flags as PersistentFlags to resourceConfigCm
+	// Add resource object flags as PersistentFlags to resourceConfigCmd
+	resourceConfigCmd.PersistentFlags().Bool("svc", false, "watch for services")
+	resourceConfigCmd.Persist
