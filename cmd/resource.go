@@ -169,4 +169,7 @@ func configureResource(operation string, cmd *cobra.Command, conf *config.Config
 func init() {
 	RootCmd.AddCommand(resourceConfigCmd)
 	resourceConfigCmd.AddCommand(
-		resourceConfigAd
+		resourceConfigAddCmd,
+		resourceConfigRemoveCmd,
+	)
+	// Add resource object flags as PersistentFlags to resourceConfigCm
