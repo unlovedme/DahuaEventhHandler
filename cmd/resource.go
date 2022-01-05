@@ -178,4 +178,5 @@ func init() {
 	resourceConfigCmd.PersistentFlags().Bool("po", false, "watch for pods")
 	resourceConfigCmd.PersistentFlags().Bool("rc", false, "watch for replication controllers")
 	resourceConfigCmd.PersistentFlags().Bool("rs", false, "watch for replicasets")
-	resourceConfigCmd.PersistentFlags().Bool("ns"
+	resourceConfigCmd.PersistentFlags().Bool("ns", false, "watch for namespaces")
+	resourceConfigCmd.PersistentFlags().Bool("pv", false, "watch for persistent volumes
