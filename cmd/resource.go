@@ -184,4 +184,5 @@ func init() {
 	resourceConfigCmd.PersistentFlags().Bool("ds", false, "watch for daemonsets")
 	resourceConfigCmd.PersistentFlags().Bool("secret", false, "watch for plain secrets")
 	resourceConfigCmd.PersistentFlags().Bool("cm", false, "watch for plain configmaps")
-	resourceConfigCmd.PersistentFlags().Bool("ing
+	resourceConfigCmd.PersistentFlags().Bool("ing", false, "watch for ingresses")
+	resourceConfigCmd.PersistentFlags().Bool("node", false, "watch for Nodes")
