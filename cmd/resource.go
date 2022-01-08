@@ -183,3 +183,5 @@ func init() {
 	resourceConfigCmd.PersistentFlags().Bool("job", false, "watch for jobs")
 	resourceConfigCmd.PersistentFlags().Bool("ds", false, "watch for daemonsets")
 	resourceConfigCmd.PersistentFlags().Bool("secret", false, "watch for plain secrets")
+	resourceConfigCmd.PersistentFlags().Bool("cm", false, "watch for plain configmaps")
+	resourceConfigCmd.PersistentFlags().Bool("ing
