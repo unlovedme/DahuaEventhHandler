@@ -181,4 +181,5 @@ func init() {
 	resourceConfigCmd.PersistentFlags().Bool("ns", false, "watch for namespaces")
 	resourceConfigCmd.PersistentFlags().Bool("pv", false, "watch for persistent volumes")
 	resourceConfigCmd.PersistentFlags().Bool("job", false, "watch for jobs")
-	resourceConfigCmd.PersistentFlag
+	resourceConfigCmd.PersistentFlags().Bool("ds", false, "watch for daemonsets")
+	resourceConfigCmd.PersistentFlags().Bool("secret", false, "watch for plain secrets")
