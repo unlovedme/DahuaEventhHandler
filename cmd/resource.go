@@ -187,4 +187,5 @@ func init() {
 	resourceConfigCmd.PersistentFlags().Bool("ing", false, "watch for ingresses")
 	resourceConfigCmd.PersistentFlags().Bool("node", false, "watch for Nodes")
 	resourceConfigCmd.PersistentFlags().Bool("clusterrole", false, "watch for cluster roles")
-	resourceConfigCmd.PersistentFlag
+	resourceConfigCmd.PersistentFlags().Bool("sa", false, "watch for service accounts")
+}
