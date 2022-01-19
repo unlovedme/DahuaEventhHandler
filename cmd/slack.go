@@ -19,4 +19,9 @@ package cmd
 import (
 	"github.com/bitnami-labs/kubewatch/config"
 	"github.com/sirupsen/logrus"
-	
+	"github.com/spf13/cobra"
+)
+
+// slackConfigCmd represents the slack subcommand
+var slackConfigCmd = &cobra.Command{
+	Use:   "
