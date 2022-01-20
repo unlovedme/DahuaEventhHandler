@@ -27,4 +27,10 @@ var slackConfigCmd = &cobra.Command{
 	Use:   "slack",
 	Short: "specific slack configuration",
 	Long:  `specific slack configuration`,
-	Run: func(cmd *c
+	Run: func(cmd *cobra.Command, args []string) {
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		token, err := cmd.Flags().G
