@@ -33,4 +33,10 @@ var slackConfigCmd = &cobra.Command{
 			logrus.Fatal(err)
 		}
 
-		token, err := cmd.Flags().G
+		token, err := cmd.Flags().GetString("token")
+		if err == nil {
+			if len(token) > 0 {
+				conf.Handler.Slack.Token = token
+			}
+		} else {
+			logrus.Fatal
