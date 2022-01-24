@@ -44,4 +44,11 @@ var slackConfigCmd = &cobra.Command{
 		channel, err := cmd.Flags().GetString("channel")
 		if err == nil {
 			if len(channel) > 0 {
-				conf.Handler.Slack.Chann
+				conf.Handler.Slack.Channel = channel
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+		title, err := cmd.Flags().GetString("title")
+		if err == nil {
+		
