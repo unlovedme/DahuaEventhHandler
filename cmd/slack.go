@@ -51,4 +51,10 @@ var slackConfigCmd = &cobra.Command{
 		}
 		title, err := cmd.Flags().GetString("title")
 		if err == nil {
-		
+			if len(title) > 0 {
+				conf.Handler.Slack.Title = title
+			}
+		}
+
+		if err = conf.Write(); err != nil {
+			log
