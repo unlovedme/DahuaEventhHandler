@@ -57,4 +57,11 @@ var slackConfigCmd = &cobra.Command{
 		}
 
 		if err = conf.Write(); err != nil {
-			log
+			logrus.Fatal(err)
+		}
+	},
+}
+
+func init() {
+	slackConfigCmd.Flags().StringP("channel", "c", "", "Specify slack channel")
+	slac
