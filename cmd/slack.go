@@ -64,4 +64,5 @@ var slackConfigCmd = &cobra.Command{
 
 func init() {
 	slackConfigCmd.Flags().StringP("channel", "c", "", "Specify slack channel")
-	slac
+	slackConfigCmd.Flags().StringP("token", "t", "", "Specify slack token")
+	slackConfigCmd.Flags().StringP("title", "", "", "Sp
