@@ -30,4 +30,4 @@ var smtpConfigCmd = &cobra.Command{
 	Short: "specific smtp configuration",
 	Long:  `specific smtp configuration`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Fprintf(os.Stderr, "CLI setter
+		fmt.Fprintf(os.Stderr, "CLI setters not implemented yet, please edit ~/.kubewatch.yaml directly. Example:\n\n%s", smtp.ConfigExa
