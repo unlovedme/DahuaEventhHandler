@@ -16,3 +16,12 @@ limitations under the License.
 
 package cmd
 
+import (
+	"fmt"
+	"os"
+
+	"github.com/bitnami-labs/kubewatch/pkg/handlers/smtp"
+	"github.com/spf13/cobra"
+)
+
+// s
