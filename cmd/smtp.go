@@ -24,4 +24,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// s
+// smtpConfigCmd represents the smtp subcommand
+var smtpConfigCmd = &cobra.Command{
+	Use:   "smtp",
+	Short: "specific smtp configuration",
+	Long:  
