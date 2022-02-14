@@ -28,4 +28,6 @@ import (
 var smtpConfigCmd = &cobra.Command{
 	Use:   "smtp",
 	Short: "specific smtp configuration",
-	Long:  
+	Long:  `specific smtp configuration`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Fprintf(os.Stderr, "CLI setter
