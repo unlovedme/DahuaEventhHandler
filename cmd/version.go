@@ -25,4 +25,8 @@ var (
 	buildDate, gitCommit string
 )
 
-var versionC
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "print version",
+	Long:  `print version`,
+	Run: func(cmd *
