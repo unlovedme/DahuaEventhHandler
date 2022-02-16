@@ -29,4 +29,10 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "print version",
 	Long:  `print version`,
-	Run: func(cmd *
+	Run: func(cmd *cobra.Command, args []string) {
+		versionPrettyString()
+	},
+}
+
+func versionPrettyString() {
+	logrus.Info("gitCommit: ",
