@@ -1,5 +1,6 @@
+
 /*
-Copyright 2016 Skippbox, Ltd.
+Copyright 2018 Bitnami
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,28 +18,4 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
-)
-
-var (
-	buildDate, gitCommit string
-)
-
-var versionCmd = &cobra.Command{
-	Use:   "version",
-	Short: "print version",
-	Long:  `print version`,
-	Run: func(cmd *cobra.Command, args []string) {
-		versionPrettyString()
-	},
-}
-
-func versionPrettyString() {
-	logrus.Info("gitCommit: ", gitCommit)
-	logrus.Info("buildDate: ", buildDate)
-}
-
-func init() {
-	RootCmd.AddCommand(versionCmd)
-}
+	"github.com/bitnami-labs/kubewatch/config"
