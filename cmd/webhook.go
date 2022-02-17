@@ -19,3 +19,36 @@ package cmd
 
 import (
 	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+)
+
+// webhookConfigCmd represents the webhook subcommand
+var webhookConfigCmd = &cobra.Command{
+	Use:   "webhook",
+	Short: "specific webhook configuration",
+	Long:  `specific webhook configuration`,
+	Run: func(cmd *cobra.Command, args []string) {
+		conf, err := config.New()
+		if err != nil {
+			logrus.Fatal(err)
+		}
+
+		url, err := cmd.Flags().GetString("url")
+		if err == nil {
+			if len(url) > 0 {
+				conf.Handler.Webhook.Url = url
+			}
+		} else {
+			logrus.Fatal(err)
+		}
+
+		if err = conf.Write(); err != nil {
+			logrus.Fatal(err)
+		}
+	},
+}
+
+func init() {
+	webhookConfigCmd.Flags().StringP("url", "u", "", "Specify Webhook url")
+}
