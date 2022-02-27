@@ -14,4 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//go:generate bash -c "go install ../tools/yannotated && yannotated
+//go:generate bash -c "go install ../tools/yannotated && yannotated -o sample.go -format go -package config -type Config"
+
+package config
+
+import (
+	"io/ioutil"
+	
