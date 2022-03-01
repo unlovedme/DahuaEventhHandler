@@ -29,4 +29,10 @@ import (
 
 var (
 	// ConfigFileName stores file of config
-	ConfigFileName = ".kubewat
+	ConfigFileName = ".kubewatch.yaml"
+
+	// ConfigSample is a sample configuration file.
+	ConfigSample = yannotated
+)
+
+// Handler contains
