@@ -38,3 +38,6 @@ var (
 // Handler contains handler configuration
 type Handler struct {
 	Slack      Slack      `json:"slack"`
+	Hipchat    Hipchat    `json:"hipchat"`
+	Mattermost Mattermost `json:"mattermost"`
+	Flock      Flock    
