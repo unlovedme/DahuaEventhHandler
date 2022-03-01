@@ -35,4 +35,6 @@ var (
 	ConfigSample = yannotated
 )
 
-// Handler contains
+// Handler contains handler configuration
+type Handler struct {
+	Slack      Slack      `json:"slack"`
