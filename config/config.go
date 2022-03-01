@@ -20,4 +20,13 @@ package config
 
 import (
 	"io/ioutil"
-	
+	"os"
+	"path/filepath"
+	"runtime"
+
+	"gopkg.in/yaml.v3"
+)
+
+var (
+	// ConfigFileName stores file of config
+	ConfigFileName = ".kubewat
