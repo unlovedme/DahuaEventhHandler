@@ -43,4 +43,9 @@ type Handler struct {
 	Flock      Flock      `json:"flock"`
 	Webhook    Webhook    `json:"webhook"`
 	MSTeams    MSTeams    `json:"msteams"`
-	SMTP     
+	SMTP       SMTP       `json:"smtp"`
+}
+
+// Resource contains resource configuration
+type Resource struct {
+	Deployment          
