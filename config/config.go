@@ -40,4 +40,7 @@ type Handler struct {
 	Slack      Slack      `json:"slack"`
 	Hipchat    Hipchat    `json:"hipchat"`
 	Mattermost Mattermost `json:"mattermost"`
-	Flock      Flock    
+	Flock      Flock      `json:"flock"`
+	Webhook    Webhook    `json:"webhook"`
+	MSTeams    MSTeams    `json:"msteams"`
+	SMTP     
