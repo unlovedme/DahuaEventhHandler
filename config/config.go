@@ -48,4 +48,6 @@ type Handler struct {
 
 // Resource contains resource configuration
 type Resource struct {
-	Deployment          
+	Deployment            bool `json:"deployment"`
+	ReplicationController bool `json:"rc"`
+	ReplicaSet            bool `json:"rs"`
