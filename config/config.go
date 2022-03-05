@@ -51,3 +51,6 @@ type Resource struct {
 	Deployment            bool `json:"deployment"`
 	ReplicationController bool `json:"rc"`
 	ReplicaSet            bool `json:"rs"`
+	DaemonSet             bool `json:"ds"`
+	Services              bool `json:"svc"`
+	Pod        
