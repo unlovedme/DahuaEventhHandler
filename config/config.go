@@ -55,4 +55,7 @@ type Resource struct {
 	Services              bool `json:"svc"`
 	Pod                   bool `json:"po"`
 	Job                   bool `json:"job"`
-	Node                  bool `json:"node
+	Node                  bool `json:"node"`
+	ClusterRole           bool `json:"clusterrole"`
+	ServiceAccount        bool `json:"sa"`
+	PersistentVolume      bool `j
