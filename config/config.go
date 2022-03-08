@@ -53,4 +53,6 @@ type Resource struct {
 	ReplicaSet            bool `json:"rs"`
 	DaemonSet             bool `json:"ds"`
 	Services              bool `json:"svc"`
-	Pod        
+	Pod                   bool `json:"po"`
+	Job                   bool `json:"job"`
+	Node                  bool `json:"node
