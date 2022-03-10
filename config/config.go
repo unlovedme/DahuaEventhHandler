@@ -58,4 +58,7 @@ type Resource struct {
 	Node                  bool `json:"node"`
 	ClusterRole           bool `json:"clusterrole"`
 	ServiceAccount        bool `json:"sa"`
-	PersistentVolume      bool `j
+	PersistentVolume      bool `json:"pv"`
+	Namespace             bool `json:"ns"`
+	Secret                bool `json:"secret"`
+	ConfigMap     
