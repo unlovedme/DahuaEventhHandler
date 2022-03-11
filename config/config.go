@@ -61,4 +61,8 @@ type Resource struct {
 	PersistentVolume      bool `json:"pv"`
 	Namespace             bool `json:"ns"`
 	Secret                bool `json:"secret"`
-	ConfigMap     
+	ConfigMap             bool `json:"configmap"`
+	Ingress               bool `json:"ing"`
+}
+
+// Config struct contains kubew
