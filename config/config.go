@@ -65,4 +65,7 @@ type Resource struct {
 	Ingress               bool `json:"ing"`
 }
 
-// Config struct contains kubew
+// Config struct contains kubewatch configuration
+type Config struct {
+	// Handlers know how to send notifications to specific services.
+	Handler Handler `json:
