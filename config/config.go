@@ -75,4 +75,6 @@ type Config struct {
 	// Resources to watch.
 	Resource Resource `json:"resource"`
 
-	// For watching specific
+	// For watching specific namespace, leave it empty for watching all.
+	// this config is ignored when watching namespaces
+	Namespac
