@@ -68,4 +68,11 @@ type Resource struct {
 // Config struct contains kubewatch configuration
 type Config struct {
 	// Handlers know how to send notifications to specific services.
-	Handler Handler `json:
+	Handler Handler `json:"handler"`
+
+	//Reason   []string `json:"reason"`
+
+	// Resources to watch.
+	Resource Resource `json:"resource"`
+
+	// For watching specific
