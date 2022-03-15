@@ -81,4 +81,9 @@ type Config struct {
 }
 
 // Slack contains slack configuration
-type Slack st
+type Slack struct {
+	// Slack "legacy" API token.
+	Token string `json:"token"`
+	// Slack channel.
+	Channel string `json:"channel"`
+	
