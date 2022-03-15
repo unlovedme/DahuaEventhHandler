@@ -77,4 +77,8 @@ type Config struct {
 
 	// For watching specific namespace, leave it empty for watching all.
 	// this config is ignored when watching namespaces
-	Namespac
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Slack contains slack configuration
+type Slack st
