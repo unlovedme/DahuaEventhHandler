@@ -96,4 +96,9 @@ type Hipchat struct {
 	Token string `json:"token"`
 	// Room name.
 	Room string `json:"room"`
-	// URL of the
+	// URL of the hipchat server.
+	Url string `json:"url"`
+}
+
+// Mattermost contains mattermost configuration
+type Mattermost s
