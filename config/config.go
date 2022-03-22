@@ -101,4 +101,10 @@ type Hipchat struct {
 }
 
 // Mattermost contains mattermost configuration
-type Mattermost s
+type Mattermost struct {
+	Channel  string `json:"room"`
+	Url      string `json:"url"`
+	Username string `json:"username"`
+}
+
+// F
