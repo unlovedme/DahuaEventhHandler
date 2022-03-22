@@ -107,4 +107,10 @@ type Mattermost struct {
 	Username string `json:"username"`
 }
 
-// F
+// Flock contains flock configuration
+type Flock struct {
+	// URL of the flock API.
+	Url string `json:"url"`
+}
+
+// W
