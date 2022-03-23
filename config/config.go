@@ -113,4 +113,10 @@ type Flock struct {
 	Url string `json:"url"`
 }
 
-// W
+// Webhook contains webhook configuration
+type Webhook struct {
+	// Webhook URL.
+	Url string `json:"url"`
+}
+
+// MSTea
