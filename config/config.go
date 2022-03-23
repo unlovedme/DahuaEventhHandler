@@ -119,4 +119,7 @@ type Webhook struct {
 	Url string `json:"url"`
 }
 
-// MSTea
+// MSTeams contains MSTeams configuration
+type MSTeams struct {
+	// MSTeams API Webhook URL.
+	WebhookU
