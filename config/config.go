@@ -122,4 +122,9 @@ type Webhook struct {
 // MSTeams contains MSTeams configuration
 type MSTeams struct {
 	// MSTeams API Webhook URL.
-	WebhookU
+	WebhookURL string `json:"webhookurl"`
+}
+
+// SMTP contains SMTP configuration.
+type SMTP struct {
+	// Destination e-mail address
