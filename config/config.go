@@ -127,4 +127,7 @@ type MSTeams struct {
 
 // SMTP contains SMTP configuration.
 type SMTP struct {
-	// Destination e-mail address
+	// Destination e-mail address.
+	To string `json:"to" yaml:"to,omitempty"`
+	// Sender e-mail address .
+	From string `json:"from" yaml:"from,
