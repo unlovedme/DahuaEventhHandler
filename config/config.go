@@ -139,4 +139,6 @@ type SMTP struct {
 	Headers map[string]string `json:"headers" yaml:"headers,omitempty"`
 	// Authentication parameters.
 	Auth SMTPAuth `json:"auth" yaml:"auth,omitempty"`
-	// If "true" forces secure SMTP pro
+	// If "true" forces secure SMTP protocol (AKA StartTLS).
+	RequireTLS bool `json:"requireTLS" yaml:"requireTLS"`
+	// SMTP hello field (optional)
