@@ -134,4 +134,6 @@ type SMTP struct {
 	// Smarthost, aka "SMTP server"; address of server used to send email.
 	Smarthost string `json:"smarthost" yaml:"smarthost,omitempty"`
 	// Subject of the outgoing emails.
-	Subject string `json:"subject" yaml:"subject,omitempt
+	Subject string `json:"subject" yaml:"subject,omitempty"`
+	// Extra e-mail headers to be added to all outgoing messages.
+	Headers map[string]string `json:"headers" yaml:"hea
