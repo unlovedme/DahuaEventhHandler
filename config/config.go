@@ -136,4 +136,7 @@ type SMTP struct {
 	// Subject of the outgoing emails.
 	Subject string `json:"subject" yaml:"subject,omitempty"`
 	// Extra e-mail headers to be added to all outgoing messages.
-	Headers map[string]string `json:"headers" yaml:"hea
+	Headers map[string]string `json:"headers" yaml:"headers,omitempty"`
+	// Authentication parameters.
+	Auth SMTPAuth `json:"auth" yaml:"auth,omitempty"`
+	// If "true" forces secure SMTP pro
