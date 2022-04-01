@@ -146,4 +146,6 @@ type SMTP struct {
 }
 
 type SMTPAuth struct {
-	// Username for PLAN and LOGIN 
+	// Username for PLAN and LOGIN auth mechanisms.
+	Username string `json:"username" yaml:"username,omitempty"`
+	// Password for PLAIN and LOGIN auth mechanism
