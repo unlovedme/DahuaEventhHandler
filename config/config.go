@@ -142,3 +142,8 @@ type SMTP struct {
 	// If "true" forces secure SMTP protocol (AKA StartTLS).
 	RequireTLS bool `json:"requireTLS" yaml:"requireTLS"`
 	// SMTP hello field (optional)
+	Hello string `json:"hello" yaml:"hello,omitempty"`
+}
+
+type SMTPAuth struct {
+	// Username for PLAN and LOGIN 
