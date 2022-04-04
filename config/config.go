@@ -151,4 +151,6 @@ type SMTPAuth struct {
 	// Password for PLAIN and LOGIN auth mechanisms.
 	Password string `json:"password" yaml:"password,omitempty"`
 	// Identity for PLAIN auth mechanism
-	Identity
+	Identity string `json:"identity" yaml:"identity,omitempty"`
+	// Secret for CRAM-MD5 auth mechanism
+	Secret string `json:"secr
