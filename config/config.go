@@ -153,4 +153,9 @@ type SMTPAuth struct {
 	// Identity for PLAIN auth mechanism
 	Identity string `json:"identity" yaml:"identity,omitempty"`
 	// Secret for CRAM-MD5 auth mechanism
-	Secret string `json:"secr
+	Secret string `json:"secret" yaml:"secret,omitempty"`
+}
+
+// New creates new config object
+func New() (*Config, error) {
+	c := &Conf
