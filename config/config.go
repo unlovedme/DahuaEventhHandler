@@ -158,4 +158,13 @@ type SMTPAuth struct {
 
 // New creates new config object
 func New() (*Config, error) {
-	c := &Conf
+	c := &Config{}
+	if err := c.Load(); err != nil {
+		return c, err
+	}
+
+	return c, nil
+}
+
+func createIfNotExist() error {
+	
