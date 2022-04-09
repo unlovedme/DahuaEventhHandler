@@ -167,4 +167,7 @@ func New() (*Config, error) {
 }
 
 func createIfNotExist() error {
-	
+	// create file if not exist
+	configFile := filepath.Join(configDir(), ConfigFileName)
+	_, err := os.Stat(configFile)
+	if err !
