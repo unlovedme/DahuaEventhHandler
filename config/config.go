@@ -201,4 +201,11 @@ func (c *Config) Load() error {
 		return err
 	}
 
-	if len(
+	if len(b) != 0 {
+		return yaml.Unmarshal(b, c)
+	}
+
+	return nil
+}
+
+// CheckMissingResourceEnvvars will read the environmen
