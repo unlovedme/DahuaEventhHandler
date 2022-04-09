@@ -208,4 +208,6 @@ func (c *Config) Load() error {
 	return nil
 }
 
-// CheckMissingResourceEnvvars will read the environmen
+// CheckMissingResourceEnvvars will read the environment for equivalent config variables to set
+func (c *Config) CheckMissingResourceEnvvars() {
+	if !c.Re
