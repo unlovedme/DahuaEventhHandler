@@ -185,4 +185,10 @@ func createIfNotExist() error {
 }
 
 // Load loads configuration from config file
-func (c *Config) L
+func (c *Config) Load() error {
+	err := createIfNotExist()
+	if err != nil {
+		return err
+	}
+
+	file, err := os.Open(ge
