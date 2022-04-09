@@ -170,4 +170,11 @@ func createIfNotExist() error {
 	// create file if not exist
 	configFile := filepath.Join(configDir(), ConfigFileName)
 	_, err := os.Stat(configFile)
-	if err !
+	if err != nil {
+		if os.IsNotExist(err) {
+			file, err := os.Create(configFile)
+			if err != nil {
+				return err
+			}
+			file.Close()
+		} else {
