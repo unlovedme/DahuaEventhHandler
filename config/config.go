@@ -191,4 +191,14 @@ func (c *Config) Load() error {
 		return err
 	}
 
-	file, err := os.Open(ge
+	file, err := os.Open(getConfigFile())
+	if err != nil {
+		return err
+	}
+
+	b, err := ioutil.ReadAll(file)
+	if err != nil {
+		return err
+	}
+
+	if len(
