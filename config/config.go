@@ -178,3 +178,11 @@ func createIfNotExist() error {
 			}
 			file.Close()
 		} else {
+			return err
+		}
+	}
+	return nil
+}
+
+// Load loads configuration from config file
+func (c *Config) L
