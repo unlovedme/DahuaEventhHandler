@@ -219,4 +219,8 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.Namespace && os.Getenv("KW_NAMESPACE") == "true" {
 		c.Resource.Namespace = true
 	}
-	if !c.Resource.Deployment && os.Getenv("KW_DEPLOYMENT") == 
+	if !c.Resource.Deployment && os.Getenv("KW_DEPLOYMENT") == "true" {
+		c.Resource.Deployment = true
+	}
+	if !c.Resource.Pod && os.Getenv("KW_POD") == "true" {
+		c.Resource.Po
