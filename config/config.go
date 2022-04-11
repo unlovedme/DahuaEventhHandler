@@ -213,4 +213,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.DaemonSet && os.Getenv("KW_DAEMONSET") == "true" {
 		c.Resource.DaemonSet = true
 	}
-	if !c.Resource.ReplicaSet && os.Gete
+	if !c.Resource.ReplicaSet && os.Getenv("KW_REPLICASET") == "true" {
+		c.Resource.ReplicaSet = true
+	}
+	if !c.Resource.Namespace && os.Getenv("KW_NAMESPAC
