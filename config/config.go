@@ -225,4 +225,8 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.Pod && os.Getenv("KW_POD") == "true" {
 		c.Resource.Pod = true
 	}
-	if !c.Resource.ReplicationController && os.Getenv("KW_REPLICATION_CONTROLLER") == "true" 
+	if !c.Resource.ReplicationController && os.Getenv("KW_REPLICATION_CONTROLLER") == "true" {
+		c.Resource.ReplicationController = true
+	}
+	if !c.Resource.Services && os.Getenv("KW_SERVICE") == "true" {
+		c.Resou
