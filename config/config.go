@@ -229,4 +229,8 @@ func (c *Config) CheckMissingResourceEnvvars() {
 		c.Resource.ReplicationController = true
 	}
 	if !c.Resource.Services && os.Getenv("KW_SERVICE") == "true" {
-		c.Resou
+		c.Resource.Services = true
+	}
+	if !c.Resource.Job && os.Getenv("KW_JOB") == "true" {
+		c.Resource.Job = true
+	}
