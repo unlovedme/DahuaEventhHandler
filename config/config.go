@@ -237,4 +237,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.PersistentVolume && os.Getenv("KW_PERSISTENT_VOLUME") == "true" {
 		c.Resource.PersistentVolume = true
 	}
-	if !c
+	if !c.Resource.Secret && os.Getenv("KW_SECRET") == "true" {
+		c.Resource.Secret = true
+	}
+	if !c.Resource.Conf
