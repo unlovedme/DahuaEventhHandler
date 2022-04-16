@@ -234,3 +234,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.Job && os.Getenv("KW_JOB") == "true" {
 		c.Resource.Job = true
 	}
+	if !c.Resource.PersistentVolume && os.Getenv("KW_PERSISTENT_VOLUME") == "true" {
+		c.Resource.PersistentVolume = true
+	}
+	if !c
