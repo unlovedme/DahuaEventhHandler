@@ -240,4 +240,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.Secret && os.Getenv("KW_SECRET") == "true" {
 		c.Resource.Secret = true
 	}
-	if !c.Resource.Conf
+	if !c.Resource.ConfigMap && os.Getenv("KW_CONFIGMAP") == "true" {
+		c.Resource.ConfigMap = true
+	}
+	if !c.Resource.Ingress && os.Getenv("KW_INGRESS") == "tru
