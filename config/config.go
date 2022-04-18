@@ -243,4 +243,8 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.ConfigMap && os.Getenv("KW_CONFIGMAP") == "true" {
 		c.Resource.ConfigMap = true
 	}
-	if !c.Resource.Ingress && os.Getenv("KW_INGRESS") == "tru
+	if !c.Resource.Ingress && os.Getenv("KW_INGRESS") == "true" {
+		c.Resource.Ingress = true
+	}
+	if !c.Resource.Node && os.Getenv("KW_NODE") == "true" {
+		c.Re
