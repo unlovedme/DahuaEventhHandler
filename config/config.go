@@ -247,4 +247,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 		c.Resource.Ingress = true
 	}
 	if !c.Resource.Node && os.Getenv("KW_NODE") == "true" {
-		c.Re
+		c.Resource.Node = true
+	}
+	if !c.Resource.ServiceAccount && os.Getenv("KW_SERVICE_ACCOUNT") == "true" {
+		c.Resource.Ser
