@@ -250,4 +250,9 @@ func (c *Config) CheckMissingResourceEnvvars() {
 		c.Resource.Node = true
 	}
 	if !c.Resource.ServiceAccount && os.Getenv("KW_SERVICE_ACCOUNT") == "true" {
-		c.Resource.Ser
+		c.Resource.ServiceAccount = true
+	}
+	if !c.Resource.ClusterRole && os.Getenv("KW_CLUSTER_ROLE") == "true" {
+		c.Resource.ClusterRole = true
+	}
+	
