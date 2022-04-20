@@ -293,4 +293,8 @@ func configDir() string {
 		home := os.Getenv("USERPROFILE")
 		return home
 	}
-	return os.Getenv("HOME
+	return os.Getenv("HOME")
+	//path := "/etc/kubewatch"
+	//if _, err := os.Stat(path); os.IsNotExist(err) {
+	//	os.Mkdir(path, 755)
+	//
