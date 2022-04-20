@@ -255,4 +255,5 @@ func (c *Config) CheckMissingResourceEnvvars() {
 	if !c.Resource.ClusterRole && os.Getenv("KW_CLUSTER_ROLE") == "true" {
 		c.Resource.ClusterRole = true
 	}
-	
+	if (c.Handler.Slack.Channel == "") && (os.Getenv("SLACK_CHANNEL") != "") {
+		c.Handler.Slack.Channel = os.Getenv("SLACK_CHANNE
