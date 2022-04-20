@@ -259,4 +259,9 @@ func (c *Config) CheckMissingResourceEnvvars() {
 		c.Handler.Slack.Channel = os.Getenv("SLACK_CHANNEL")
 	}
 	if (c.Handler.Slack.Token == "") && (os.Getenv("SLACK_TOKEN") != "") {
-		c.Handler.Slack.Token = os.Geten
+		c.Handler.Slack.Token = os.Getenv("SLACK_TOKEN")
+	}
+}
+
+func (c *Config) Write() error {
+	f, err := os.OpenFile(getConfigFile(), os.O_WRONLY|os.O
