@@ -271,4 +271,9 @@ func (c *Config) Write() error {
 	defer f.Close()
 
 	enc := yaml.NewEncoder(f)
-	enc.SetIndent(2) // compat with 
+	enc.SetIndent(2) // compat with old versions of kubewatch
+	return enc.Encode(c)
+}
+
+func getConfigFile() string {
+	configFile := filepath.Join(co
