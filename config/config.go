@@ -276,4 +276,9 @@ func (c *Config) Write() error {
 }
 
 func getConfigFile() string {
-	configFile := filepath.Join(co
+	configFile := filepath.Join(configDir(), ConfigFileName)
+	if _, err := os.Stat(configFile); err == nil {
+		return configFile
+	}
+
+	return
