@@ -256,4 +256,7 @@ func (c *Config) CheckMissingResourceEnvvars() {
 		c.Resource.ClusterRole = true
 	}
 	if (c.Handler.Slack.Channel == "") && (os.Getenv("SLACK_CHANNEL") != "") {
-		c.Handler.Slack.Channel = os.Getenv("SLACK_CHANNE
+		c.Handler.Slack.Channel = os.Getenv("SLACK_CHANNEL")
+	}
+	if (c.Handler.Slack.Token == "") && (os.Getenv("SLACK_TOKEN") != "") {
+		c.Handler.Slack.Token = os.Geten
