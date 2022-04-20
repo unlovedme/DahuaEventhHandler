@@ -264,4 +264,11 @@ func (c *Config) CheckMissingResourceEnvvars() {
 }
 
 func (c *Config) Write() error {
-	f, err := os.OpenFile(getConfigFile(), os.O_WRONLY|os.O
+	f, err := os.OpenFile(getConfigFile(), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	enc := yaml.NewEncoder(f)
+	enc.SetIndent(2) // compat with 
