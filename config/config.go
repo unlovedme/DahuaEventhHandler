@@ -289,4 +289,8 @@ func configDir() string {
 		return configDir
 	}
 
-	if r
+	if runtime.GOOS == "windows" {
+		home := os.Getenv("USERPROFILE")
+		return home
+	}
+	return os.Getenv("HOME
