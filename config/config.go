@@ -281,4 +281,12 @@ func getConfigFile() string {
 		return configFile
 	}
 
-	return
+	return ""
+}
+
+func configDir() string {
+	if configDir := os.Getenv("KW_CONFIG"); configDir != "" {
+		return configDir
+	}
+
+	if r
