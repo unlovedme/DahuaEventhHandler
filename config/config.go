@@ -297,4 +297,6 @@ func configDir() string {
 	//path := "/etc/kubewatch"
 	//if _, err := os.Stat(path); os.IsNotExist(err) {
 	//	os.Mkdir(path, 755)
-	//
+	//}
+	//return path
+}
