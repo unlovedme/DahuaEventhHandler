@@ -7,4 +7,11 @@ handler:
     token: ""
     # Slack channel.
     channel: ""
-    # Title of the messag
+    # Title of the message.
+    title: ""
+  hipchat:
+    # Hipchat token.
+    token: ""
+    # Room name.
+    room: ""
+    # URL of the hipchat ser
