@@ -21,4 +21,11 @@ handler:
     url: ""
     username: ""
   flock:
-    # URL of the flock API
+    # URL of the flock API.
+    url: ""
+  webhook:
+    # Webhook URL.
+    url: ""
+  msteams:
+    # MSTeams API Webhook URL.
+    webhookurl: "
