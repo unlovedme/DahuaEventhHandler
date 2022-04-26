@@ -14,4 +14,11 @@ handler:
     token: ""
     # Room name.
     room: ""
-    # URL of the hipchat ser
+    # URL of the hipchat server.
+    url: ""
+  mattermost:
+    room: ""
+    url: ""
+    username: ""
+  flock:
+    # URL of the flock API
