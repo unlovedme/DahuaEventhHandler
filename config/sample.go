@@ -28,4 +28,10 @@ handler:
     url: ""
   msteams:
     # MSTeams API Webhook URL.
-    webhookurl: "
+    webhookurl: ""
+  smtp:
+    # Destination e-mail address.
+    to: ""
+    # Sender e-mail address .
+    from: ""
+    # Sma
