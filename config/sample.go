@@ -34,4 +34,6 @@ handler:
     to: ""
     # Sender e-mail address .
     from: ""
-    # Sma
+    # Smarthost, aka "SMTP server"; address of server used to send email.
+    smarthost: ""
+    # Subject of 
