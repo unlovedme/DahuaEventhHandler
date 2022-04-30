@@ -36,4 +36,6 @@ handler:
     from: ""
     # Smarthost, aka "SMTP server"; address of server used to send email.
     smarthost: ""
-    # Subject of 
+    # Subject of the outgoing emails.
+    subject: ""
+    # Extra e-mail headers to be added to all outgoing
