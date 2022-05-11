@@ -38,4 +38,9 @@ handler:
     smarthost: ""
     # Subject of the outgoing emails.
     subject: ""
-    # Extra e-mail headers to be added to all outgoing
+    # Extra e-mail headers to be added to all outgoing messages.
+    headers: {}
+    # Authentication parameters.
+    auth:
+      # Username for PLAN and LOGIN auth mechanisms.
+  
