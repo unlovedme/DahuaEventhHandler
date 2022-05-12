@@ -43,4 +43,7 @@ handler:
     # Authentication parameters.
     auth:
       # Username for PLAN and LOGIN auth mechanisms.
-  
+      username: ""
+      # Password for PLAIN and LOGIN auth mechanisms.
+      password: ""
+      # Identity for
