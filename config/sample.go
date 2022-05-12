@@ -46,4 +46,8 @@ handler:
       username: ""
       # Password for PLAIN and LOGIN auth mechanisms.
       password: ""
-      # Identity for
+      # Identity for PLAIN auth mechanism
+      identity: ""
+      # Secret for CRAM-MD5 auth mechanism
+      secret: ""
+    # If "true" forces secur
