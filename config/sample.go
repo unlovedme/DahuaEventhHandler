@@ -50,4 +50,8 @@ handler:
       identity: ""
       # Secret for CRAM-MD5 auth mechanism
       secret: ""
-    # If "true" forces secur
+    # If "true" forces secure SMTP protocol (AKA StartTLS).
+    requireTLS: false
+    # SMTP hello field (optional)
+    hello: ""
+# Resources to 
