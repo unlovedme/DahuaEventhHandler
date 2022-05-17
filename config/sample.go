@@ -64,4 +64,11 @@ resource:
   po: false
   job: false
   node: false
-  clu
+  clusterrole: false
+  sa: false
+  pv: false
+  ns: false
+  secret: false
+  configmap: false
+  ing: false
+# For wa
