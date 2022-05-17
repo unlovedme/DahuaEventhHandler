@@ -54,4 +54,14 @@ handler:
     requireTLS: false
     # SMTP hello field (optional)
     hello: ""
-# Resources to 
+# Resources to watch.
+resource:
+  deployment: false
+  rc: false
+  rs: false
+  ds: false
+  svc: false
+  po: false
+  job: false
+  node: false
+  clu
