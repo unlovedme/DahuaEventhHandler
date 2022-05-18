@@ -71,4 +71,5 @@ resource:
   secret: false
   configmap: false
   ing: false
-# For wa
+# For watching specific namespace, leave it empty for watching all.
+# this config is ignored when watching namesp
