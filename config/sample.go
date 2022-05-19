@@ -72,4 +72,6 @@ resource:
   configmap: false
   ing: false
 # For watching specific namespace, leave it empty for watching all.
-# this config is ignored when watching namesp
+# this config is ignored when watching namespaces
+namespace: ""
+`
