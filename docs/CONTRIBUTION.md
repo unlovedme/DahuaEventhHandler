@@ -8,4 +8,6 @@ We love your input! We want to make contributing to this project as easy and tra
 - Proposing new features
 
 ## We use Github to develop kubewatch
-We use github to host code, t
+We use github to host code, to track issues and feature requests, as well as accept pull requests.
+
+## We use [Github Flow](https://guides.github.co
