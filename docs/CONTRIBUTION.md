@@ -18,4 +18,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 3. If you've changed APIs, update the documentation.
 4. Ensure the test suite passes.
 5. Make sure your code lints. (by using gofmt tool `gofmt -s -w . `)
-6. Issue that pull request
+6. Issue that pull request!
+
+## Report bugs using Github's [issues](https://github.com/bitnami-labs/kubewatch/issues)
+We use GitHub issues to tr
