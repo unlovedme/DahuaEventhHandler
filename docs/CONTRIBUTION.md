@@ -23,4 +23,9 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 ## Report bugs using Github's [issues](https://github.com/bitnami-labs/kubewatch/issues)
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](); it's that easy!
 
-## Write bug reports with detail,
+## Write bug reports with detail, background, and sample code
+**Great Bug Reports** tend to have:
+
+- A quick summary and/or background
+- Steps to reproduce
+  - B
