@@ -28,4 +28,8 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 - A quick summary and/or background
 - Steps to reproduce
-  - B
+  - Be specific!
+  - Give sample code if you can.
+- What you expected would happen
+- What actually happens
+- Notes (possi
