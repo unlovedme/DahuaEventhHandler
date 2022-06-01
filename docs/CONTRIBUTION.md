@@ -36,4 +36,8 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 ## Use a Consistent Coding Style
 
-G
+Golang Coding Style can be followed
+* You can try running `gofmt -s -w .` for style unification
+
+## License
+By con
