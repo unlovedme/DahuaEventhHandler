@@ -40,4 +40,4 @@ Golang Coding Style can be followed
 * You can try running `gofmt -s -w .` for style unification
 
 ## License
-By con
+By contributing, you agree that your contributions will be licensed under its Apache License 2.0.
