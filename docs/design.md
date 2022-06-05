@@ -8,4 +8,8 @@ Kubewatch contains three components: controller, config, handler
 
 The config object contains `kubewatch` configuration, like handlers, filters.
 
-A config object is used to creating new c
+A config object is used to creating new client.
+
+## Controller
+
+The controller initializes using the config object by reading the `.kubewatch.yaml` or c
