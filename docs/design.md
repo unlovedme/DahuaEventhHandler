@@ -18,4 +18,5 @@ If the parameters are not fully mentioned, the config falls back to read a set o
 Controller creates necessary `SharedIndexInformer`s provided by `kubernetes/client-go` for listening and watching
 resource changes. Controller updates this subscription information with Kubernetes API Server.
 
-Whenever, the 
+Whenever, the Kubernetes Controller Manager gets events related to the subscribed resources, it pushes the events to
+`SharedIndexInformer`. T
