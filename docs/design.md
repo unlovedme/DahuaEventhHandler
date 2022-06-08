@@ -12,4 +12,5 @@ A config object is used to creating new client.
 
 ## Controller
 
-The controller initializes using the config object by reading the `.kubewatch.yaml` or c
+The controller initializes using the config object by reading the `.kubewatch.yaml` or command line arguments.
+If the parameters are not fully mentioned, the config falls back to read a set of standard environment variab
