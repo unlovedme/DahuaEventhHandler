@@ -21,4 +21,9 @@ resource changes. Controller updates this subscription information with Kubernet
 Whenever, the Kubernetes Controller Manager gets events related to the subscribed resources, it pushes the events to
 `SharedIndexInformer`. This in-turn puts the events onto a rate-limiting queue for better handling of the events.
 
-Controller picks the even
+Controller picks the events from the queue and hands over the events to the appropriate handler after
+necessary filtering.
+
+## Handler
+
+Handler m
