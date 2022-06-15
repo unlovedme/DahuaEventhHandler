@@ -28,4 +28,7 @@ necessary filtering.
 
 Handler manages how `kubewatch` handles events.
 
-With each event get from k8s and matched filtering from configuration, it is passed to ha
+With each event get from k8s and matched filtering from configuration, it is passed to handler. Currently, `kubewatch` has 7 handlers:
+
+ - `Default`: which just print the event in JSON format
+ - `Floc
