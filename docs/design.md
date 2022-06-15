@@ -19,4 +19,6 @@ Controller creates necessary `SharedIndexInformer`s provided by `kubernetes/clie
 resource changes. Controller updates this subscription information with Kubernetes API Server.
 
 Whenever, the Kubernetes Controller Manager gets events related to the subscribed resources, it pushes the events to
-`SharedIndexInformer`. T
+`SharedIndexInformer`. This in-turn puts the events onto a rate-limiting queue for better handling of the events.
+
+Controller picks the even
