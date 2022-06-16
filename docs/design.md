@@ -33,4 +33,5 @@ With each event get from k8s and matched filtering from configuration, it is pas
  - `Default`: which just print the event in JSON format
  - `Flock`: which send notification to Flock channel based on information from config
  - `Hipchat`: which send notification to Hipchat room based on information from config
- - `Mattermost`: which send notification to Mattermost channe
+ - `Mattermost`: which send notification to Mattermost channel based on information from config
+ - `MS Teams`: which send notification to MS Team incoming webhook based on information
