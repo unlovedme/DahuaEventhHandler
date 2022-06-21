@@ -38,4 +38,6 @@ With each event get from k8s and matched filtering from configuration, it is pas
  - `Slack`: which send notification to Slack channel based on information from config
  - `Smtp`: which sends notifications to email recipients using a SMTP server obtained from config
 
-More handlers will be added in fu
+More handlers will be added in future.
+
+Each handler must implement the [Handler interface](https://github.com/bitnami-labs/kubewatch/blob/master/pkg/h
