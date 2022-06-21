@@ -36,4 +36,6 @@ With each event get from k8s and matched filtering from configuration, it is pas
  - `Mattermost`: which send notification to Mattermost channel based on information from config
  - `MS Teams`: which send notification to MS Team incoming webhook based on information from config
  - `Slack`: which send notification to Slack channel based on information from config
- - `Smtp`: which 
+ - `Smtp`: which sends notifications to email recipients using a SMTP server obtained from config
+
+More handlers will be added in fu
