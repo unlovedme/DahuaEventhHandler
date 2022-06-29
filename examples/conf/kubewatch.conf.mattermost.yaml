@@ -5,4 +5,11 @@ handler:
     username: "username"
 resource:
   deployment: true
-  repli
+  replicationcontroller: false
+  replicaset: false
+  daemonset: false
+  services: false
+  pod: false
+  job: false
+  persistentvolume: false
+  i
