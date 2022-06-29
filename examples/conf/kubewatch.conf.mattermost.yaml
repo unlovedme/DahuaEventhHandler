@@ -1,2 +1,8 @@
 handler:
-  mattermos
+  mattermost:
+    url: "url of incoming webhook"
+    channel: "channel"
+    username: "username"
+resource:
+  deployment: true
+  repli
