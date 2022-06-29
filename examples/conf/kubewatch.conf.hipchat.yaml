@@ -1,6 +1,9 @@
+
 handler:
-  flock:
-    url: "https://api.flock.com/hooks/sendMessage/XXXXXXXX" # XXXXXXXX to be replaced with incomming webhooks of the flock channl
+  hipchat:
+    token: "token"
+    room: "room_id OR room_name"
+    url: "https://yourhipchat.domain.com/v2" # defaults to "https://api.hipchat.com/v2"
 resource:
   deployment: true
   replicationcontroller: false
