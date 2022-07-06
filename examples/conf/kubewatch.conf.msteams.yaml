@@ -14,4 +14,7 @@ data:
       replicationcontroller: false
       replicaset: false
       daemonset: false
-     
+      services: false
+      pod: true
+      secret: false
+      configmap: false
