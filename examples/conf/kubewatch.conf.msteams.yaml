@@ -9,4 +9,9 @@ data:
       msteams:
         webhookurl: https://outlook.office.com/webhook/...
     resource:
-      namespace
+      namespace: false
+      deployment: false
+      replicationcontroller: false
+      replicaset: false
+      daemonset: false
+     
