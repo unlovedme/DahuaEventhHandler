@@ -16,3 +16,10 @@ handler:
     url: "http://localhost:8080"
 resource:
   deployment: false
+  replicationcontroller: false
+  replicaset: false
+  daemonset: false
+  services: false
+  pod: false
+  job: false
+  persist
