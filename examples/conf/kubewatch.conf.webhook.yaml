@@ -8,4 +8,11 @@ handler:
     url: ""
   mattermost:
     channel: ""
- 
+    url: ""
+    username: ""
+  flock:
+    url: ""
+  webhook:
+    url: "http://localhost:8080"
+resource:
+  deployment: false
