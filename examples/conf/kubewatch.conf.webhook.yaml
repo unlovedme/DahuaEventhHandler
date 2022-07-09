@@ -22,4 +22,7 @@ resource:
   services: false
   pod: false
   job: false
-  persist
+  persistentvolume: false
+  namespace: true
+  secret: false
+  ingress: false
