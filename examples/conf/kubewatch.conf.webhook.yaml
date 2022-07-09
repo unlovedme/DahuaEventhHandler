@@ -1,3 +1,11 @@
 handler:
   slack:
-    t
+    token: ""
+    channel: ""
+  hipchat:
+    token: ""
+    room: ""
+    url: ""
+  mattermost:
+    channel: ""
+ 
