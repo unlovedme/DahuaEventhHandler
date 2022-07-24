@@ -1,3 +1,8 @@
 apiVersion: v1
 kind: Pod
-metad
+metadata:
+  name: kubewatch
+  namespace: default
+spec:
+  containers:
+  - image: bitnami/kubewatch #using 
