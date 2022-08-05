@@ -9,4 +9,10 @@ spec:
     imagePullPolicy: Always
     name: kubewatch
     volumeMounts:
-    - name: conf
+    - name: config-volume
+      mountPath: /root
+  restartPolicy: Always
+  volumes:
+  - name: config-volume
+    configMap:
+    
