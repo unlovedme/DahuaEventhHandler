@@ -31,4 +31,8 @@ import (
 	"github.com/sirupsen/logrus"
 
 	apps_v1 "k8s.io/api/apps/v1"
-	batch_v1 "k8s.io/api/batch/v1
+	batch_v1 "k8s.io/api/batch/v1"
+	api_v1 "k8s.io/api/core/v1"
+	ext_v1beta1 "k8s.io/api/extensions/v1beta1"
+	rbac_v1beta1 "k8s.io/api/rbac/v1beta1"
+	meta
