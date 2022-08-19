@@ -53,4 +53,11 @@ var serverStartTime time.Time
 // Event indicate the informerEvent
 type Event struct {
 	key          string
-	even
+	eventType    string
+	namespace    string
+	resourceType string
+}
+
+// Controller object
+type Controller struct {
+	logger   
