@@ -60,4 +60,8 @@ type Event struct {
 
 // Controller object
 type Controller struct {
-	logger   
+	logger       *logrus.Entry
+	clientset    kubernetes.Interface
+	queue        workqueue.RateLimitingInterface
+	informer     cache.SharedIndexInformer
+	event
