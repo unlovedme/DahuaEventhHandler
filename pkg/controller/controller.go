@@ -64,4 +64,7 @@ type Controller struct {
 	clientset    kubernetes.Interface
 	queue        workqueue.RateLimitingInterface
 	informer     cache.SharedIndexInformer
-	event
+	eventHandler handlers.Handler
+}
+
+// Start prepares watchers and run their controllers, then waits for process termination signa
