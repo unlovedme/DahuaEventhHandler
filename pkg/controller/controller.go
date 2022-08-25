@@ -74,4 +74,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if _, err := rest.InClusterConfig(); err != nil {
 		kubeClient = utils.GetClientOutOfCluster()
 	} else {
-		kubeClient = uti
+		kubeClient = utils.GetClient()
+	}
+
+	// Adding Default Critical Alerts
+	// For Capturing Critical Event NodeNotReady in Nodes
+	
