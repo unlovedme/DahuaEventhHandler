@@ -71,4 +71,7 @@ type Controller struct {
 func Start(conf *config.Config, eventHandler handlers.Handler) {
 	var kubeClient kubernetes.Interface
 
-	if _, err
+	if _, err := rest.InClusterConfig(); err != nil {
+		kubeClient = utils.GetClientOutOfCluster()
+	} else {
+		kubeClient = uti
