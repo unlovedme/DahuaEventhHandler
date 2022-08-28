@@ -79,4 +79,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 	// Adding Default Critical Alerts
 	// For Capturing Critical Event NodeNotReady in Nodes
-	
+	nodeNotReadyInformer := cache.NewSharedIndexInformer(
+		&cache.ListWatch{
+			ListFunc: func(options meta_v1.ListOptio
