@@ -81,4 +81,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	// For Capturing Critical Event NodeNotReady in Nodes
 	nodeNotReadyInformer := cache.NewSharedIndexInformer(
 		&cache.ListWatch{
-			ListFunc: func(options meta_v1.ListOptio
+			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+				options.FieldSelector = "involvedObject.kind=Node,type=Normal,reason=NodeNotReady"
