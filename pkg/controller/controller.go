@@ -91,4 +91,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			},
 		},
 		&api_v1.Event{},
-		0, 
+		0, //Skip resync
+		cache.Indexers{},
+	)
+
+	nodeNotReadyController := newResourceController(kubeClient, eventHandler, nodeNotRea
