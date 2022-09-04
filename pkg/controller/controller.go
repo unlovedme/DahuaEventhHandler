@@ -102,4 +102,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	go nodeNotReadyController.Run(stopNodeNotReadyCh)
 
 	// For Capturing Critical Event NodeReady in Nodes
-	nodeReadyInformer := c
+	nodeReadyInformer := cache.NewSharedIndexInformer(
+		&cache.ListWatch{
+			ListFunc: func(options meta_v1.ListOptions) (runt
