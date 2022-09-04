@@ -95,4 +95,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		cache.Indexers{},
 	)
 
-	nodeNotReadyController := newResourceController(kubeClient, eventHandler, nodeNotRea
+	nodeNotReadyController := newResourceController(kubeClient, eventHandler, nodeNotReadyInformer, "NodeNotReady")
+	stopNodeNotReadyCh := make(chan struct{})
+	defer close(stopNodeNotReadyCh)
+
+	go nodeNotReadyController.R
