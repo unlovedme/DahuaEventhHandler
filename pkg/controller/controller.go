@@ -99,4 +99,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	stopNodeNotReadyCh := make(chan struct{})
 	defer close(stopNodeNotReadyCh)
 
-	go nodeNotReadyController.R
+	go nodeNotReadyController.Run(stopNodeNotReadyCh)
+
+	// For Capturing Critical Event NodeReady in Nodes
+	nodeReadyInformer := c
