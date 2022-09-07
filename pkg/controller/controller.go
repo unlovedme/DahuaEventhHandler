@@ -104,4 +104,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	// For Capturing Critical Event NodeReady in Nodes
 	nodeReadyInformer := cache.NewSharedIndexInformer(
 		&cache.ListWatch{
-			ListFunc: func(options meta_v1.ListOptions) (runt
+			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+				options.FieldSelector = "involvedObject.kind=Node,type=Normal,reason=NodeReady"
+				return kubeC
