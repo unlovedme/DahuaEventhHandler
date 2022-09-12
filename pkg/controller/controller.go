@@ -108,4 +108,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				options.FieldSelector = "involvedObject.kind=Node,type=Normal,reason=NodeReady"
 				return kubeClient.CoreV1().Events(conf.Namespace).List(options)
 			},
-			WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, erro
+			WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+				options.FieldSelector = "involvedObject.kind=Node,type=Normal,reason=NodeReady"
+				return kubeClient.CoreV1(
