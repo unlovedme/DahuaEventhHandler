@@ -122,4 +122,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	stopNodeReadyCh := make(chan struct{})
 	defer close(stopNodeReadyCh)
 
-	go nodeReadyController.Run(stopNodeRea
+	go nodeReadyController.Run(stopNodeReadyCh)
+
+	// For Capturing Critical Event NodeRebooted in Nodes
+	nodeRebootedInformer := cache.NewSharedIndexInformer(
