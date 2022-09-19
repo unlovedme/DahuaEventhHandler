@@ -128,4 +128,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	nodeRebootedInformer := cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
-				options.Fie
+				options.FieldSelector = "involvedObject.kind=Node,type=Warning,reason=Rebooted"
+				return kubeClient.CoreV1().Events(conf.Namespace).L
