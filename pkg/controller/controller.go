@@ -129,4 +129,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		&cache.ListWatch{
 			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 				options.FieldSelector = "involvedObject.kind=Node,type=Warning,reason=Rebooted"
-				return kubeClient.CoreV1().Events(conf.Namespace).L
+				return kubeClient.CoreV1().Events(conf.Namespace).List(options)
+			},
+			WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+				options.FieldSelector =
