@@ -141,4 +141,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		cache.Indexers{},
 	)
 
-	nodeRebootedController := newResour
+	nodeRebootedController := newResourceController(kubeClient, eventHandler, nodeRebootedInformer, "NodeRebooted")
+	stopNodeRebootedCh := make(chan struct
