@@ -147,4 +147,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 	go nodeRebootedController.Run(stopNodeRebootedCh)
 
-	// User Configured E
+	// User Configured Events
+	if conf.Resource.Pod {
+		informer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: func(op
