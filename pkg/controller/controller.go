@@ -142,4 +142,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	)
 
 	nodeRebootedController := newResourceController(kubeClient, eventHandler, nodeRebootedInformer, "NodeRebooted")
-	stopNodeRebootedCh := make(chan struct
+	stopNodeRebootedCh := make(chan struct{})
+	defer close(stopNodeRebootedCh)
+
+	go nodeRebootedController.Run(stopNodeRebootedCh)
+
+	// User Configured E
