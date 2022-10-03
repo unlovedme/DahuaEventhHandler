@@ -155,4 +155,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().Pods(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.CoreV1().P
+					return kubeClient.CoreV1().Pods(conf.Namespace).Watch(options)
+				},
+			},
+			&api_v1.Pod{},
+			0, //Skip resync
+			cache.Indexers{
