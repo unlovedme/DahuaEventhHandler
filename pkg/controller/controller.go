@@ -165,4 +165,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 		c := newResourceController(kubeClient, eventHandler, informer, "pod")
 		stopCh := make(chan struct{})
-		d
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+
+		// For Capturing CrashLoopBackOff Events in pods
+		backoffInformer := cache
