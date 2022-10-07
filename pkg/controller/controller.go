@@ -160,4 +160,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			},
 			&api_v1.Pod{},
 			0, //Skip resync
-			cache.Indexers{
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, informer, "pod")
+		stopCh := make(chan struct{})
+		d
