@@ -170,4 +170,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		go c.Run(stopCh)
 
 		// For Capturing CrashLoopBackOff Events in pods
-		backoffInformer := cache
+		backoffInformer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Ob
