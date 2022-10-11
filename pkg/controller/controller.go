@@ -172,4 +172,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		// For Capturing CrashLoopBackOff Events in pods
 		backoffInformer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1.ListOptions) (runtime.Ob
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					options.FieldSelector = "involvedObject.kind=Pod,type=Warning,reason=BackOff"
+					return
