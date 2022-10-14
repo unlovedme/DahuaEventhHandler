@@ -181,4 +181,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().Events(conf.Namespace).Watch(options)
 				},
 			},
-	
+			&api_v1.Event{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		backoffcontroller := newResourceC
