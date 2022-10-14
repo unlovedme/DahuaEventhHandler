@@ -177,4 +177,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().Events(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					options.FieldSelector = "involvedObject.kind=Pod,type=Warn
+					options.FieldSelector = "involvedObject.kind=Pod,type=Warning,reason=BackOff"
+					return kubeClient.CoreV1().Events(conf.Namespace).Watch(options)
+				},
+			},
+	
