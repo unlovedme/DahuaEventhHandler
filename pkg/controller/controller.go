@@ -186,4 +186,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			cache.Indexers{},
 		)
 
-		backoffcontroller := newResourceC
+		backoffcontroller := newResourceController(kubeClient, eventHandler, backoffInformer, "Backoff")
+		stopBackoffCh := make(chan struct{})
+		defer close(stopBackoff
