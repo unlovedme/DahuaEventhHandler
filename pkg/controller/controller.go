@@ -196,4 +196,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 	if conf.Resource.DaemonSet {
 		informer := cache.NewSharedIndexInformer(
-			&cache
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.AppsV1().DaemonSe
