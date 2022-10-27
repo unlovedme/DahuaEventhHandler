@@ -205,4 +205,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				},
 			},
 			&apps_v1.DaemonSet{},
-			0,
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, info
