@@ -201,4 +201,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.AppsV1().DaemonSets(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-		
+					return kubeClient.AppsV1().DaemonSets(conf.Namespace).Watch(options)
+				},
+			},
+			&apps_v1.DaemonSet{},
+			0,
