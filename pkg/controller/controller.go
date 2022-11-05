@@ -219,4 +219,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.ReplicaSet {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1.
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.AppsV1().ReplicaSets(conf.Namespace).List(op
