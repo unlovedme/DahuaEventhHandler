@@ -223,4 +223,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.AppsV1().ReplicaSets(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					ret
+					return kubeClient.AppsV1().ReplicaSets(conf.Namespace).Watch(options)
+				},
+			},
+			&apps_v1.ReplicaSet{},
+			0, //Skip
