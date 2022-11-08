@@ -227,4 +227,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				},
 			},
 			&apps_v1.ReplicaSet{},
-			0, //Skip
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, informer, "replica set")
+	
