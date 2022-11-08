@@ -239,4 +239,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	}
 
 	if conf.Resource.Services {
-		informer := c
+		informer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptions) (runtim
