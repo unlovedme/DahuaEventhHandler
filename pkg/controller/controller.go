@@ -255,4 +255,10 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 		c := newResourceController(kubeClient, eventHandler, informer, "service")
 		stopCh := make(chan struct{})
-		defer close(s
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if conf.Resource.Deployment {
+		informer := cache.NewSharedIndexInfo
