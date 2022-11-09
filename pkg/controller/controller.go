@@ -253,3 +253,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			cache.Indexers{},
 		)
 
+		c := newResourceController(kubeClient, eventHandler, informer, "service")
+		stopCh := make(chan struct{})
+		defer close(s
