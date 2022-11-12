@@ -270,4 +270,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.AppsV1().Deployments(conf.Namespace).Watch(options)
 				},
 			},
-			&apps_
+			&apps_v1.Deployment{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandl
