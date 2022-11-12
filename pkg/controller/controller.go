@@ -288,4 +288,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 					return kubeClient.CoreV1().Namespaces().List(options)
 				},
-				WatchFunc:
+				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+					return kubeClient.CoreV1().Namespaces
