@@ -289,4 +289,12 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().Namespaces().List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.CoreV1().Namespaces
+					return kubeClient.CoreV1().Namespaces().Watch(options)
+				},
+			},
+			&api_v1.Namespace{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := new
