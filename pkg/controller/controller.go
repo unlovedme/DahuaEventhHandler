@@ -285,4 +285,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.Namespace {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1.ListOp
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.CoreV1().Namespaces().List(options)
+				},
+				WatchFunc:
