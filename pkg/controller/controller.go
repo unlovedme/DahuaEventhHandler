@@ -266,4 +266,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 					return kubeClient.AppsV1().Deployments(conf.Namespace).List(options)
 				},
-				WatchFunc: func(options meta_v1.ListOptions) (
+				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+					return kubeClient.AppsV1().Deployments(conf.Namespace).Watch(options)
+				},
+			},
+			&apps_
