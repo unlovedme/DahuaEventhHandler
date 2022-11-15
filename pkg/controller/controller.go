@@ -315,4 +315,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				},
 			},
 			&api_v1.ReplicationController{},
-			0
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, informer, "replication controller")
+		
