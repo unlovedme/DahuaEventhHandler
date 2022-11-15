@@ -310,4 +310,5 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 					return kubeClient.CoreV1().ReplicationControllers(conf.Namespace).List(options)
 				},
-				WatchFunc: func(
+				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+					return kubeClient.CoreV1().Replicat
