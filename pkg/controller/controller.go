@@ -299,4 +299,10 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 		c := newResourceController(kubeClient, eventHandler, informer, "namespace")
 		stopCh := make(chan struct{})
-		defer
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if conf.Resource.ReplicationController {
+		informer := cache.NewSharedIndexInformer
