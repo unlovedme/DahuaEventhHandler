@@ -320,4 +320,11 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		)
 
 		c := newResourceController(kubeClient, eventHandler, informer, "replication controller")
-		
+		stopCh := make(chan struct{})
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if conf.Resource.Job {
+		informer := cac
