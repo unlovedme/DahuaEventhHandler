@@ -308,4 +308,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
-	
+					return kubeClient.CoreV1().ReplicationControllers(conf.Namespace).List(options)
+				},
+				WatchFunc: func(
