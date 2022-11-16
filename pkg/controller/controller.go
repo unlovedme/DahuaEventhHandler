@@ -327,4 +327,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	}
 
 	if conf.Resource.Job {
-		informer := cac
+		informer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, e
