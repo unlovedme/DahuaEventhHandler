@@ -351,4 +351,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.Node {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1.Lis
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.CoreV1().Nodes().List(options)
+				},
+				Watch
