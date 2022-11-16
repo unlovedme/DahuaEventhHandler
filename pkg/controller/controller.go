@@ -336,4 +336,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.BatchV1().Jobs(conf.Namespace).Watch(options)
 				},
 			},
-			
+			&batch_v1.Job{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventH
