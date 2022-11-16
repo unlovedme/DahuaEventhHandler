@@ -355,4 +355,12 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().Nodes().List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.CoreV1().Nodes().Watch(opt
+					return kubeClient.CoreV1().Nodes().Watch(options)
+				},
+			},
+			&api_v1.Node{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(
