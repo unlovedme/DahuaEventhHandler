@@ -363,4 +363,11 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			cache.Indexers{},
 		)
 
-		c := newResourceController(
+		c := newResourceController(kubeClient, eventHandler, informer, "node")
+		stopCh := make(chan struct{})
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if c
