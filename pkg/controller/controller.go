@@ -370,4 +370,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		go c.Run(stopCh)
 	}
 
-	if c
+	if conf.Resource.ServiceAccount {
+		informer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: 
