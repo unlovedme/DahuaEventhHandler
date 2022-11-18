@@ -380,4 +380,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().ServiceAccounts(conf.Namespace).Watch(options)
 				},
 			},
-			&api_v1.ServiceAccoun
+			&api_v1.ServiceAccount{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, informer, "service 
