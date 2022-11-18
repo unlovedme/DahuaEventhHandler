@@ -377,4 +377,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().ServiceAccounts(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					
+					return kubeClient.CoreV1().ServiceAccounts(conf.Namespace).Watch(options)
+				},
+			},
+			&api_v1.ServiceAccoun
