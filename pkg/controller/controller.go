@@ -395,4 +395,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.ClusterRole {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.RbacV1beta1().ClusterRoles().List(options)
+				},
+				WatchFun
