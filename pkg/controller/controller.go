@@ -409,4 +409,10 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 		c := newResourceController(kubeClient, eventHandler, informer, "cluster role")
 		stopCh := make(chan struct{})
-		defer clo
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if conf.Resource.PersistentVolume {
+		informer := cache.NewSharedIndexInfor
