@@ -424,4 +424,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.CoreV1().PersistentVolumes().Watch(options)
 				},
 			},
-			&api_v1
+			&api_v1.PersistentVolume{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, i
