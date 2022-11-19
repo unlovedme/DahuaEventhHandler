@@ -418,4 +418,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
-					return kubeClie
+					return kubeClient.CoreV1().PersistentVolumes().List(options)
+				},
+				WatchFunc: func(options meta_v1.ListOptions) (watch.Int
