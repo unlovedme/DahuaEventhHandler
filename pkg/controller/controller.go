@@ -420,4 +420,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 					return kubeClient.CoreV1().PersistentVolumes().List(options)
 				},
-				WatchFunc: func(options meta_v1.ListOptions) (watch.Int
+				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
+					return kubeClient.CoreV1().PersistentVolumes().Watch(options)
+				},
+			},
+			&api_v1
