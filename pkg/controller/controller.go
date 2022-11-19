@@ -399,4 +399,12 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.RbacV1beta1().ClusterRoles().List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.RbacV1beta1().ClusterRoles().Watch(op
+					return kubeClient.RbacV1beta1().ClusterRoles().Watch(options)
+				},
+			},
+			&rbac_v1beta1.ClusterRole{},
+			0, //Skip resync
+			cache.Indexers{},
+		)
+
+		c := new
