@@ -439,4 +439,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.Secret {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.CoreV1().Secrets(conf.Namespace).List(options)
+				},
+				WatchFunc: f
