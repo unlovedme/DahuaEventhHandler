@@ -460,4 +460,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 
 	if conf.Resource.ConfigMap {
 		informer := cache.NewSharedIndexInformer(
-			&cache.ListWatch
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.Co
