@@ -473,4 +473,12 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			cache.Indexers{},
 		)
 
-		c := newResourceController(kubeClient, eventHandler, informer, "configm
+		c := newResourceController(kubeClient, eventHandler, informer, "configmap")
+		stopCh := make(chan struct{})
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	if conf.Resource.Ingress {
+		infor
