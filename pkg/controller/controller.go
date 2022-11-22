@@ -481,4 +481,6 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	}
 
 	if conf.Resource.Ingress {
-		infor
+		informer := cache.NewSharedIndexInformer(
+			&cache.ListWatch{
+				ListFunc: func(options meta_v1.ListOptio
