@@ -512,4 +512,6 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 	queue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
 	var newEvent Event
 	var err error
-	i
+	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			newEvent.key, err = cache.MetaNamespaceKe
