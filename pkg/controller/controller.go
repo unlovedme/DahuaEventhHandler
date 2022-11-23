@@ -503,4 +503,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	}
 
 	sigterm := make(chan os.Signal, 1)
-	signal.Notify(sigterm, sysca
+	signal.Notify(sigterm, syscall.SIGTERM)
+	signal.Notify(sigterm, syscall.SIGINT)
+	<-sigterm
+}
+
+func newResourceController(client kubernetes.Interfa
