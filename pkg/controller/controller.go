@@ -487,4 +487,9 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 					return kubeClient.ExtensionsV1beta1().Ingresses(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.Extens
+					return kubeClient.ExtensionsV1beta1().Ingresses(conf.Namespace).Watch(options)
+				},
+			},
+			&ext_v1beta1.Ingress{},
+			0, //Skip resync
+			cache.Indexers
