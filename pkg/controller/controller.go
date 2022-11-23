@@ -492,4 +492,8 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 			},
 			&ext_v1beta1.Ingress{},
 			0, //Skip resync
-			cache.Indexers
+			cache.Indexers{},
+		)
+
+		c := newResourceController(kubeClient, eventHandler, informer, "ingress")
+		stopCh := make
