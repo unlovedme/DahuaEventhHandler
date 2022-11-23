@@ -496,4 +496,11 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		)
 
 		c := newResourceController(kubeClient, eventHandler, informer, "ingress")
-		stopCh := make
+		stopCh := make(chan struct{})
+		defer close(stopCh)
+
+		go c.Run(stopCh)
+	}
+
+	sigterm := make(chan os.Signal, 1)
+	signal.Notify(sigterm, sysca
