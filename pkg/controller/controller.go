@@ -509,4 +509,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 }
 
 func newResourceController(client kubernetes.Interface, eventHandler handlers.Handler, informer cache.SharedIndexInformer, resourceType string) *Controller {
-	queue := 
+	queue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
+	var newEvent Event
+	var err error
+	i
