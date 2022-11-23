@@ -483,4 +483,7 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 	if conf.Resource.Ingress {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
-				ListFunc: func(options meta_v1.ListOptio
+				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
+					return kubeClient.ExtensionsV1beta1().Ingresses(conf.Namespace).List(options)
+				},
+				Wat
