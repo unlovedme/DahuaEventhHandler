@@ -514,4 +514,7 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 	var err error
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
-			newEvent.key, err = cache.MetaNamespaceKe
+			newEvent.key, err = cache.MetaNamespaceKeyFunc(obj)
+			newEvent.eventType = "create"
+			newEvent.resourceType = resourceType
+			logrus.WithFie
