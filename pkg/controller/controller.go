@@ -526,4 +526,6 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			newEvent.key, err = cache.MetaNamespaceKeyFunc(old)
 			newEvent.eventType = "update"
 			newEvent.resourceType = resourceType
-			logrus.WithField("
+			logrus.WithField("pkg", "kubewatch-"+resourceType).Infof("Processing update to %v: %s", resourceType, newEvent.key)
+			if err == nil {
+				queue.
