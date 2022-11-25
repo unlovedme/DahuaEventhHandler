@@ -523,4 +523,7 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			}
 		},
 		UpdateFunc: func(old, new interface{}) {
-			newEvent.key, err = cache.MetaNamespace
+			newEvent.key, err = cache.MetaNamespaceKeyFunc(old)
+			newEvent.eventType = "update"
+			newEvent.resourceType = resourceType
+			logrus.WithField("
