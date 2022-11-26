@@ -528,4 +528,8 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			newEvent.resourceType = resourceType
 			logrus.WithField("pkg", "kubewatch-"+resourceType).Infof("Processing update to %v: %s", resourceType, newEvent.key)
 			if err == nil {
-				queue.
+				queue.Add(newEvent)
+			}
+		},
+		DeleteFunc: func(obj interface{}) {
+			newEvent.key, err = cache.DeletionHandlingMetaNamesp
