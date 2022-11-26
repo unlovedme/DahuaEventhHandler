@@ -535,4 +535,5 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			newEvent.key, err = cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
 			newEvent.eventType = "delete"
 			newEvent.resourceType = resourceType
-			newEvent.namespac
+			newEvent.namespace = utils.GetObjectMetaData(obj).Namespace
+			logrus.WithField("pkg", "
