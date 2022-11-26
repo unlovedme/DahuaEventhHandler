@@ -536,4 +536,5 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			newEvent.eventType = "delete"
 			newEvent.resourceType = resourceType
 			newEvent.namespace = utils.GetObjectMetaData(obj).Namespace
-			logrus.WithField("pkg", "
+			logrus.WithField("pkg", "kubewatch-"+resourceType).Infof("Processing delete to %v: %s", resourceType, newEvent.key)
+			if err == nil {
