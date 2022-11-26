@@ -532,4 +532,7 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 			}
 		},
 		DeleteFunc: func(obj interface{}) {
-			newEvent.key, err = cache.DeletionHandlingMetaNamesp
+			newEvent.key, err = cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
+			newEvent.eventType = "delete"
+			newEvent.resourceType = resourceType
+			newEvent.namespac
