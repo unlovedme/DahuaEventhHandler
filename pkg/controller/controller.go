@@ -552,4 +552,7 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 	}
 }
 
-// Run sta
+// Run starts the kubewatch controller
+func (c *Controller) Run(stopCh <-chan struct{}) {
+	defer utilruntime.HandleCrash()
+	defer c.queue.Shu
