@@ -545,4 +545,11 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 
 	return &Controller{
 		logger:       logrus.WithField("pkg", "kubewatch-"+resourceType),
-		clients
+		clientset:    client,
+		informer:     informer,
+		queue:        queue,
+		eventHandler: eventHandler,
+	}
+}
+
+// Run sta
