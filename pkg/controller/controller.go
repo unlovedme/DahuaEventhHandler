@@ -562,4 +562,5 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 
 	go c.informer.Run(stopCh)
 
-	if 
+	if !cache.WaitForCacheSync(stopCh, c.HasSynced) {
+		utilruntime.HandleError(fmt.Errorf("Timed out waiting for caches 
