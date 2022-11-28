@@ -555,4 +555,11 @@ func newResourceController(client kubernetes.Interface, eventHandler handlers.Ha
 // Run starts the kubewatch controller
 func (c *Controller) Run(stopCh <-chan struct{}) {
 	defer utilruntime.HandleCrash()
-	defer c.queue.Shu
+	defer c.queue.ShutDown()
+
+	c.logger.Info("Starting kubewatch controller")
+	serverStartTime = time.Now().Local()
+
+	go c.informer.Run(stopCh)
+
+	if 
