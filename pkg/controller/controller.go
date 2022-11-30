@@ -569,4 +569,8 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 
 	c.logger.Info("Kubewatch controller synced and ready")
 
-	wait.Until(c.runWorker, time
+	wait.Until(c.runWorker, time.Second, stopCh)
+}
+
+// HasSynced is required for the cache.Controller interface.
+func (c *Controller) HasSynced() bool
