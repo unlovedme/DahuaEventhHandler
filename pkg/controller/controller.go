@@ -582,4 +582,11 @@ func (c *Controller) LastSyncResourceVersion() string {
 	return c.informer.LastSyncResourceVersion()
 }
 
-func (c *Controller) runWor
+func (c *Controller) runWorker() {
+	for c.processNextItem() {
+		// continue looping
+	}
+}
+
+func (c *Controller) processNextItem() bool {
+	newEvent, q
