@@ -578,4 +578,8 @@ func (c *Controller) HasSynced() bool {
 }
 
 // LastSyncResourceVersion is required for the cache.Controller interface.
-func (c *Co
+func (c *Controller) LastSyncResourceVersion() string {
+	return c.informer.LastSyncResourceVersion()
+}
+
+func (c *Controller) runWor
