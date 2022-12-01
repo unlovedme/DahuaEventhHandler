@@ -573,4 +573,9 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 }
 
 // HasSynced is required for the cache.Controller interface.
-func (c *Controller) HasSynced() bool
+func (c *Controller) HasSynced() bool {
+	return c.informer.HasSynced()
+}
+
+// LastSyncResourceVersion is required for the cache.Controller interface.
+func (c *Co
