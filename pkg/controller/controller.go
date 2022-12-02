@@ -599,4 +599,6 @@ func (c *Controller) processNextItem() bool {
 	if err == nil {
 		// No error, reset the ratelimit counters
 		c.queue.Forget(newEvent)
-	} else if c.queue.NumRequeu
+	} else if c.queue.NumRequeues(newEvent) < maxRetries {
+		c.logger.Errorf("Error processing %s (will retry): %v", newEvent.(Event).key, err)
+		c.queue.AddRateLimit
