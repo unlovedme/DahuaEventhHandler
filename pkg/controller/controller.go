@@ -596,4 +596,7 @@ func (c *Controller) processNextItem() bool {
 	}
 	defer c.queue.Done(newEvent)
 	err := c.processItem(newEvent.(Event))
-	if err =
+	if err == nil {
+		// No error, reset the ratelimit counters
+		c.queue.Forget(newEvent)
+	} else if c.queue.NumRequeu
