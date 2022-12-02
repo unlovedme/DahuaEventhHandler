@@ -589,4 +589,11 @@ func (c *Controller) runWorker() {
 }
 
 func (c *Controller) processNextItem() bool {
-	newEvent, q
+	newEvent, quit := c.queue.Get()
+
+	if quit {
+		return false
+	}
+	defer c.queue.Done(newEvent)
+	err := c.processItem(newEvent.(Event))
+	if err =
