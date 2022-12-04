@@ -601,4 +601,7 @@ func (c *Controller) processNextItem() bool {
 		c.queue.Forget(newEvent)
 	} else if c.queue.NumRequeues(newEvent) < maxRetries {
 		c.logger.Errorf("Error processing %s (will retry): %v", newEvent.(Event).key, err)
-		c.queue.AddRateLimit
+		c.queue.AddRateLimited(newEvent)
+	} else {
+		// err != nil and too many retries
+		c.logger.Errorf("Error processing %s (giving up): %v",
