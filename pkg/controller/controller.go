@@ -615,4 +615,8 @@ func (c *Controller) processNextItem() bool {
 /* TODOs
 - Enhance event creation using client-side cacheing machanisms - pending
 - Enhance the processItem to classify events - done
-- Send
+- Send alerts correspoding to events - done
+*/
+
+func (c *Controller) processItem(newEvent Event) error {
+	obj, _, err := c
