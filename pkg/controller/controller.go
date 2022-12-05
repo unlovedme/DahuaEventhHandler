@@ -613,4 +613,6 @@ func (c *Controller) processNextItem() bool {
 }
 
 /* TODOs
-- Enha
+- Enhance event creation using client-side cacheing machanisms - pending
+- Enhance the processItem to classify events - done
+- Send
