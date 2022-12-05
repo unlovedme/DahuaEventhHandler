@@ -604,4 +604,13 @@ func (c *Controller) processNextItem() bool {
 		c.queue.AddRateLimited(newEvent)
 	} else {
 		// err != nil and too many retries
-		c.logger.Errorf("Error processing %s (giving up): %v",
+		c.logger.Errorf("Error processing %s (giving up): %v", newEvent.(Event).key, err)
+		c.queue.Forget(newEvent)
+		utilruntime.HandleError(err)
+	}
+
+	return true
+}
+
+/* TODOs
+- Enha
