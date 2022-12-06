@@ -619,4 +619,6 @@ func (c *Controller) processNextItem() bool {
 */
 
 func (c *Controller) processItem(newEvent Event) error {
-	obj, _, err := c
+	obj, _, err := c.informer.GetIndexer().GetByKey(newEvent.key)
+	if err != nil {
+		return fmt.Errorf("Error fetching object with key %s from stor
