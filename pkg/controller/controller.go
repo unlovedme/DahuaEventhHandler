@@ -626,4 +626,7 @@ func (c *Controller) processItem(newEvent Event) error {
 	// get object's metedata
 	objectMeta := utils.GetObjectMetaData(obj)
 
-	// hold s
+	// hold status type for default critical alerts
+	var status string
+
+	// namespace retrived from event key incase
