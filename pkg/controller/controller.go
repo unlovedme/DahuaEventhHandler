@@ -629,4 +629,6 @@ func (c *Controller) processItem(newEvent Event) error {
 	// hold status type for default critical alerts
 	var status string
 
-	// namespace retrived from event key incase
+	// namespace retrived from event key incase namespace value is empty
+	if newEvent.namespace == "" && strings.Contains(newEvent.key, "/") {
+		substring := strings.Spl
