@@ -639,4 +639,6 @@ func (c *Controller) processItem(newEvent Event) error {
 	// process events based on its type
 	switch newEvent.eventType {
 	case "create":
-		// compare CreationTimestamp and serverStartTime and alert only on latest ev
+		// compare CreationTimestamp and serverStartTime and alert only on latest events
+		// Could be Replaced by using Delta or DeltaFIFO
+		if objectMeta.CreationTimestamp.Sub(serverStartTime).Seconds(
