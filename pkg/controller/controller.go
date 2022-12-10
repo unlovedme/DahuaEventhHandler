@@ -636,4 +636,7 @@ func (c *Controller) processItem(newEvent Event) error {
 		newEvent.key = substring[1]
 	}
 
-	// process events 
+	// process events based on its type
+	switch newEvent.eventType {
+	case "create":
+		// compare CreationTimestamp and serverStartTime and alert only on latest ev
