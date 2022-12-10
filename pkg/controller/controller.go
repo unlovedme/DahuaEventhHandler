@@ -631,4 +631,9 @@ func (c *Controller) processItem(newEvent Event) error {
 
 	// namespace retrived from event key incase namespace value is empty
 	if newEvent.namespace == "" && strings.Contains(newEvent.key, "/") {
-		substring := strings.Spl
+		substring := strings.Split(newEvent.key, "/")
+		newEvent.namespace = substring[0]
+		newEvent.key = substring[1]
+	}
+
+	// process events 
