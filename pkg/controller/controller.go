@@ -641,4 +641,9 @@ func (c *Controller) processItem(newEvent Event) error {
 	case "create":
 		// compare CreationTimestamp and serverStartTime and alert only on latest events
 		// Could be Replaced by using Delta or DeltaFIFO
-		if objectMeta.CreationTimestamp.Sub(serverStartTime).Seconds(
+		if objectMeta.CreationTimestamp.Sub(serverStartTime).Seconds() > 0 {
+			switch newEvent.resourceType {
+			case "NodeNotReady":
+				status = "Danger"
+			case "NodeReady":
+				status =
