@@ -646,4 +646,11 @@ func (c *Controller) processItem(newEvent Event) error {
 			case "NodeNotReady":
 				status = "Danger"
 			case "NodeReady":
-				status =
+				status = "Normal"
+			case "NodeRebooted":
+				status = "Danger"
+			case "Backoff":
+				status = "Danger"
+			default:
+				status = "Normal"
+		
