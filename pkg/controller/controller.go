@@ -661,4 +661,9 @@ func (c *Controller) processItem(newEvent Event) error {
 				Status:    status,
 				Reason:    "Created",
 			}
-			c.eventHandler.H
+			c.eventHandler.Handle(kbEvent)
+			return nil
+		}
+	case "update":
+		/* TODOs
+		- enahace update event processing in such a way that, it send a
