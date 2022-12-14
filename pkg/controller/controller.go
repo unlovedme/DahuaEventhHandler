@@ -653,4 +653,8 @@ func (c *Controller) processItem(newEvent Event) error {
 				status = "Danger"
 			default:
 				status = "Normal"
-		
+			}
+			kbEvent := event.Event{
+				Name:      objectMeta.Name,
+				Namespace: newEvent.namespace,
+				Kin
