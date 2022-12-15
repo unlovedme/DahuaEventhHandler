@@ -666,4 +666,9 @@ func (c *Controller) processItem(newEvent Event) error {
 		}
 	case "update":
 		/* TODOs
-		- enahace update event processing in such a way that, it send a
+		- enahace update event processing in such a way that, it send alerts about what got changed.
+		*/
+		switch newEvent.resourceType {
+		case "Backoff":
+			status = "Danger"
+		defa
