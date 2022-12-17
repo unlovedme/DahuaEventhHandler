@@ -679,4 +679,10 @@ func (c *Controller) processItem(newEvent Event) error {
 			Namespace: newEvent.namespace,
 			Kind:      newEvent.resourceType,
 			Status:    status,
-			Reas
+			Reason:    "Updated",
+		}
+		c.eventHandler.Handle(kbEvent)
+		return nil
+	case "delete":
+		kbEvent := event.Event{
+	
