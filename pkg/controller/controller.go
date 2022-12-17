@@ -671,4 +671,9 @@ func (c *Controller) processItem(newEvent Event) error {
 		switch newEvent.resourceType {
 		case "Backoff":
 			status = "Danger"
-		defa
+		default:
+			status = "Warning"
+		}
+		kbEvent := event.Event{
+			Name:      newEvent.key,
+			Nam
