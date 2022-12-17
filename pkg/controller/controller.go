@@ -688,4 +688,11 @@ func (c *Controller) processItem(newEvent Event) error {
 			Name:      newEvent.key,
 			Namespace: newEvent.namespace,
 			Kind:      newEvent.resourceType,
-			Stat
+			Status:    "Danger",
+			Reason:    "Deleted",
+		}
+		c.eventHandler.Handle(kbEvent)
+		return nil
+	}
+	return nil
+}
