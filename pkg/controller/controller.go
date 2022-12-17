@@ -676,4 +676,7 @@ func (c *Controller) processItem(newEvent Event) error {
 		}
 		kbEvent := event.Event{
 			Name:      newEvent.key,
-			Nam
+			Namespace: newEvent.namespace,
+			Kind:      newEvent.resourceType,
+			Status:    status,
+			Reas
