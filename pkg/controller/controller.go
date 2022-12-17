@@ -685,4 +685,7 @@ func (c *Controller) processItem(newEvent Event) error {
 		return nil
 	case "delete":
 		kbEvent := event.Event{
-	
+			Name:      newEvent.key,
+			Namespace: newEvent.namespace,
+			Kind:      newEvent.resourceType,
+			Stat
