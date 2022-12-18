@@ -77,3 +77,67 @@ type FlockMessageAttachementViews struct {
 // Init prepares Flock configuration
 func (f *Flock) Init(c *config.Config) error {
 	url := c.Handler.Flock.Url
+
+	if url == "" {
+		url = os.Getenv("KW_FLOCK_URL")
+	}
+
+	f.Url = url
+
+	return checkMissingFlockVars(f)
+}
+
+// Handle handles an event.
+func (f *Flock) Handle(e event.Event) {
+	flockMessage := prepareFlockMessage(e, f)
+
+	err := postMessage(f.Url, flockMessage)
+	if err != nil {
+		log.Printf("%s\n", err)
+		return
+	}
+
+	log.Printf("Message successfully sent to channel %s at %s", f.Url, time.Now())
+}
+
+func checkMissingFlockVars(s *Flock) error {
+	if s.Url == "" {
+		return fmt.Errorf(flockErrMsg, "Missing Flock url")
+	}
+
+	return nil
+}
+
+func prepareFlockMessage(e event.Event, f *Flock) *FlockMessage {
+	return &FlockMessage{
+		Text:         "Kubewatch Alert",
+		Notification: "Kubewatch Alert",
+		Attachements: []FlockMessageAttachement{
+			{
+				Title: e.Message(),
+				Color: flockColors[e.Status],
+			},
+		},
+	}
+}
+
+func postMessage(url string, flockMessage *FlockMessage) error {
+	message, err := json.Marshal(flockMessage)
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(message))
+	if err != nil {
+		return err
+	}
+	req.Header.Add("Content-Type", "application/json")
+
+	client := &http.Client{}
+	_, err = client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
