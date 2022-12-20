@@ -33,4 +33,9 @@ func TestFlockInit(t *testing.T) {
 		err   error
 	}{
 		{config.Flock{Url: "foo"}, nil},
-		{co
+		{config.Flock{}, expectedError},
+	}
+
+	for _, tt := range Tests {
+		c := &config.Config{}
+		c.Handler.Flock = tt
