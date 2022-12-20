@@ -26,4 +26,11 @@ import (
 
 func TestFlockInit(t *testing.T) {
 	s := &Flock{}
-	expectedError := fmt.Errorf(flockErrMsg, "Missing Flock
+	expectedError := fmt.Errorf(flockErrMsg, "Missing Flock url")
+
+	var Tests = []struct {
+		flock config.Flock
+		err   error
+	}{
+		{config.Flock{Url: "foo"}, nil},
+		{co
