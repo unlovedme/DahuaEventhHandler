@@ -21,4 +21,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/bitnami-labs/kubewatch/config
+	"github.com/bitnami-labs/kubewatch/config"
+)
+
+func TestFlockInit(t *testing.T) {
+	s := &Flock{}
+	expectedError := fmt.Errorf(flockErrMsg, "Missing Flock
