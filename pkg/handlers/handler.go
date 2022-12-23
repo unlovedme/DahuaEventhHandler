@@ -17,4 +17,6 @@ limitations under the License.
 package handlers
 
 import (
-	"gith
+	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/bitnami-labs/kubewatch/pkg/event"
+	"github.com/bitnami-labs/ku
