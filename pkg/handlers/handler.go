@@ -25,4 +25,8 @@ import (
 	"github.com/bitnami-labs/kubewatch/pkg/handlers/msteam"
 	"github.com/bitnami-labs/kubewatch/pkg/handlers/slack"
 	"github.com/bitnami-labs/kubewatch/pkg/handlers/smtp"
-	"github.com/bitnami-labs/kubewat
+	"github.com/bitnami-labs/kubewatch/pkg/handlers/webhook"
+)
+
+// Handler is implemented by any handler.
+// The Handle method is used to process eve
