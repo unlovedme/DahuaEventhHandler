@@ -29,4 +29,10 @@ import (
 )
 
 // Handler is implemented by any handler.
-// The Handle method is used to process eve
+// The Handle method is used to process event
+type Handler interface {
+	Init(c *config.Config) error
+	Handle(e event.Event)
+}
+
+// Map maps
