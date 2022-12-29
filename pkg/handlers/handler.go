@@ -35,4 +35,7 @@ type Handler interface {
 	Handle(e event.Event)
 }
 
-// Map maps
+// Map maps each event handler function to a name for easily lookup
+var Map = map[string]interface{}{
+	"default":    &Default{},
+	"slack": 
