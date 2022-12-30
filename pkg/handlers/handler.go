@@ -49,4 +49,9 @@ var Map = map[string]interface{}{
 
 // Default handler implements Handler interface,
 // print each event with JSON format
-type Default
+type Default struct {
+}
+
+// Init initializes handler configuration
+// Do nothing for default handler
+func (d *Defa
