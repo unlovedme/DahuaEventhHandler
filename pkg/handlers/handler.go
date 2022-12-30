@@ -41,4 +41,7 @@ var Map = map[string]interface{}{
 	"slack":      &slack.Slack{},
 	"hipchat":    &hipchat.Hipchat{},
 	"mattermost": &mattermost.Mattermost{},
-	"flock":      &f
+	"flock":      &flock.Flock{},
+	"webhook":    &webhook.Webhook{},
+	"ms-teams":   &msteam.MSTeams{},
+	"smtp":       &sm
