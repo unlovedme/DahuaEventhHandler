@@ -44,4 +44,9 @@ var Map = map[string]interface{}{
 	"flock":      &flock.Flock{},
 	"webhook":    &webhook.Webhook{},
 	"ms-teams":   &msteam.MSTeams{},
-	"smtp":       &sm
+	"smtp":       &smtp.SMTP{},
+}
+
+// Default handler implements Handler interface,
+// print each event with JSON format
+type Default
