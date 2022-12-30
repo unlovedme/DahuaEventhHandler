@@ -38,4 +38,7 @@ type Handler interface {
 // Map maps each event handler function to a name for easily lookup
 var Map = map[string]interface{}{
 	"default":    &Default{},
-	"slack": 
+	"slack":      &slack.Slack{},
+	"hipchat":    &hipchat.Hipchat{},
+	"mattermost": &mattermost.Mattermost{},
+	"flock":      &f
