@@ -54,4 +54,9 @@ type Default struct {
 
 // Init initializes handler configuration
 // Do nothing for default handler
-func (d *Defa
+func (d *Default) Init(c *config.Config) error {
+	return nil
+}
+
+// Handle handles an event.
+func (d *Default) Handl
