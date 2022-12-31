@@ -59,4 +59,5 @@ func (d *Default) Init(c *config.Config) error {
 }
 
 // Handle handles an event.
-func (d *Default) Handl
+func (d *Default) Handle(e event.Event) {
+}
