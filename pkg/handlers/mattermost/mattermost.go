@@ -13,3 +13,127 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+*/
+
+package mattermost
+
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"bytes"
+	"encoding/json"
+	"net/http"
+	"time"
+
+	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/bitnami-labs/kubewatch/pkg/event"
+)
+
+var mattermostColors = map[string]string{
+	"Normal":  "#00FF00",
+	"Warning": "#FFFF00",
+	"Danger":  "#FF0000",
+}
+
+var mattermostErrMsg = `
+%s
+
+You need to set Mattermost url, channel and username for Mattermost notify,
+using "--channel/-c", "--url/-u" and "--username/-n", or using environment variables:
+
+export KW_MATTERMOST_CHANNEL=mattermost_channel
+export KW_MATTERMOST_URL=mattermost_url
+export KW_MATTERMOST_USERNAME=mattermost_username
+
+Command line flags will override environment variables
+
+`
+
+// Mattermost handler implements handler.Handler interface,
+// Notify event to Mattermost channel
+type Mattermost struct {
+	Channel  string
+	Url      string
+	Username string
+}
+
+// MattermostMessage struct for messages
+type MattermostMessage struct {
+	Channel      string                         `json:"channel"`
+	Username     string                         `json:"username"`
+	IconUrl      string                         `json:"icon_url"`
+	Text         string                         `json:"text"`
+	Attachements []MattermostMessageAttachement `json:"attachments"`
+}
+
+// MattermostMessageAttachement for message attachments
+type MattermostMessageAttachement struct {
+	Title string `json:"title"`
+	Color string `json:"color"`
+}
+
+// Init prepares Mattermost configuration
+func (m *Mattermost) Init(c *config.Config) error {
+	channel := c.Handler.Mattermost.Channel
+	url := c.Handler.Mattermost.Url
+	username := c.Handler.Mattermost.Username
+
+	if channel == "" {
+		channel = os.Getenv("KW_MATTERMOST_CHANNEL")
+	}
+
+	if url == "" {
+		url = os.Getenv("KW_MATTERMOST_URL")
+	}
+
+	if username == "" {
+		username = os.Getenv("KW_MATTERMOST_USERNAME")
+	}
+
+	m.Channel = channel
+	m.Url = url
+	m.Username = username
+
+	return checkMissingMattermostVars(m)
+}
+
+// Handle handles an event.
+func (m *Mattermost) Handle(e event.Event) {
+	mattermostMessage := prepareMattermostMessage(e, m)
+
+	err := postMessage(m.Url, mattermostMessage)
+	if err != nil {
+		log.Printf("%s\n", err)
+		return
+	}
+
+	log.Printf("Message successfully sent to channel %s at %s", m.Channel, time.Now())
+}
+
+func checkMissingMattermostVars(s *Mattermost) error {
+	if s.Channel == "" || s.Url == "" || s.Username == "" {
+		return fmt.Errorf(mattermostErrMsg, "Missing Mattermost channel, url or username")
+	}
+
+	return nil
+}
+
+func prepareMattermostMessage(e event.Event, m *Mattermost) *MattermostMessage {
+	return &MattermostMessage{
+		Channel:  m.Channel,
+		Username: m.Username,
+		IconUrl:  "https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo_with_border.png",
+		Attachements: []MattermostMessageAttachement{
+			{
+				Title: e.Message(),
+				Color: mattermostColors[e.Status],
+			},
+		},
+	}
+}
+
+func postMessage(url string, mattermostMessage *MattermostMessage) error {
+	message, err := json.Marshal(mattermostMessage)
+	if err != nil {
