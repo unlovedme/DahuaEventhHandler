@@ -86,3 +86,44 @@ func (s *Hipchat) Init(c *config.Config) error {
 // Handle handles the notification.
 func (s *Hipchat) Handle(e event.Event) {
 	client := hipchat.NewClient(s.Token)
+	if s.Url != "" {
+		baseUrl, err := url.Parse(s.Url)
+		if err != nil {
+			panic(err)
+		}
+		client.BaseURL = baseUrl
+	}
+
+	notificationRequest := prepareHipchatNotification(e)
+	_, err := client.Room.Notification(s.Room, &notificationRequest)
+
+	if err != nil {
+		log.Printf("%s\n", err)
+		return
+	}
+
+	log.Printf("Message successfully sent to room %s", s.Room)
+}
+
+func checkMissingHipchatVars(s *Hipchat) error {
+	if s.Token == "" || s.Room == "" {
+		return fmt.Errorf(hipchatErrMsg, "Missing hipchat token or room")
+	}
+
+	return nil
+}
+
+func prepareHipchatNotification(e event.Event) hipchat.NotificationRequest {
+	notification := hipchat.NotificationRequest{
+		Message: e.Message(),
+		Notify:  true,
+		From:    "kubewatch",
+	}
+
+	if color, ok := hipchatColors[e.Status]; ok {
+
+		notification.Color = color
+	}
+
+	return notification
+}
