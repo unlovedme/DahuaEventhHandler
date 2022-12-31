@@ -137,3 +137,20 @@ func prepareMattermostMessage(e event.Event, m *Mattermost) *MattermostMessage {
 func postMessage(url string, mattermostMessage *MattermostMessage) error {
 	message, err := json.Marshal(mattermostMessage)
 	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(message))
+	if err != nil {
+		return err
+	}
+	req.Header.Add("Content-Type", "application/json")
+
+	client := &http.Client{}
+	_, err = client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
