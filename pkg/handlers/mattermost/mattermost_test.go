@@ -24,4 +24,6 @@ import (
 	"github.com/bitnami-labs/kubewatch/config"
 )
 
-func TestMattermostIn
+func TestMattermostInit(t *testing.T) {
+	s := &Mattermost{}
+	expectedError := fmt.Errorf(mattermostErrMsg, "Missing Mattermost ch
