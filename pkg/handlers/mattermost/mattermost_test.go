@@ -14,4 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package matter
+package mattermost
+
+import (
+	"fmt"
+	"reflect"
+	"testing"
+
+	"github.com/bitnami-labs/kubewatch/config"
+)
+
+func TestMattermostIn
