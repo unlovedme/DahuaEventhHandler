@@ -32,4 +32,5 @@ func TestMattermostInit(t *testing.T) {
 		mattermost config.Mattermost
 		err        error
 	}{
-		{config.Mattermost{Url
+		{config.Mattermost{Url: "foo", Channel: "bar", Username: "username"}, nil},
+		{config.Mattermost{Url: "foo", Channel: "bar"}, expected
