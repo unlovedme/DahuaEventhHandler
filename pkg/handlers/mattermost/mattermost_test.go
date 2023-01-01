@@ -26,4 +26,10 @@ import (
 
 func TestMattermostInit(t *testing.T) {
 	s := &Mattermost{}
-	expectedError := fmt.Errorf(mattermostErrMsg, "Missing Mattermost ch
+	expectedError := fmt.Errorf(mattermostErrMsg, "Missing Mattermost channel, url or username")
+
+	var Tests = []struct {
+		mattermost config.Mattermost
+		err        error
+	}{
+		{config.Mattermost{Url
