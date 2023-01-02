@@ -35,4 +35,6 @@ func TestMattermostInit(t *testing.T) {
 		{config.Mattermost{Url: "foo", Channel: "bar", Username: "username"}, nil},
 		{config.Mattermost{Url: "foo", Channel: "bar"}, expectedError},
 		{config.Mattermost{Url: "foo", Username: "username"}, expectedError},
-		{config.Mattermost{Channel: "foo", Use
+		{config.Mattermost{Channel: "foo", Username: "username"}, expectedError},
+		{config.Mattermost{Url: "foo"}, expectedError},
+		{config.Mattermost{Channel: "bar"}, expectedErr
