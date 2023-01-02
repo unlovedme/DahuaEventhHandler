@@ -44,4 +44,9 @@ func TestMattermostInit(t *testing.T) {
 
 	for _, tt := range Tests {
 		c := &config.Config{}
-		c.Handler.Mattermost = tt.matte
+		c.Handler.Mattermost = tt.mattermost
+		if err := s.Init(c); !reflect.DeepEqual(err, tt.err) {
+			t.Fatalf("Init(): %v", err)
+		}
+	}
+}
