@@ -39,4 +39,9 @@ func TestMattermostInit(t *testing.T) {
 		{config.Mattermost{Url: "foo"}, expectedError},
 		{config.Mattermost{Channel: "bar"}, expectedError},
 		{config.Mattermost{Username: "bar"}, expectedError},
-		{config.Mattermost{}, expectedError
+		{config.Mattermost{}, expectedError},
+	}
+
+	for _, tt := range Tests {
+		c := &config.Config{}
+		c.Handler.Mattermost = tt.matte
