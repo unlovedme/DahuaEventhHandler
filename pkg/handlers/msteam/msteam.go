@@ -25,4 +25,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/bitnami-lab
+	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/bitnami-labs/kubewatch/pkg/event"
+)
+
+var msteamsErrMsg = `
+%s
+
+You need to set th
