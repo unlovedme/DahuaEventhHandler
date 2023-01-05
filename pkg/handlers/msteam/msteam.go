@@ -42,3 +42,11 @@ Command line flags will override environment variables
 `
 
 var msTeamsColors = map[string]string{
+	"Normal":  "2DC72D",
+	"Warning": "DEFF22",
+	"Danger":  "8C1A1A",
+}
+
+// Constants for Sending a Card
+const (
+	messageTy
