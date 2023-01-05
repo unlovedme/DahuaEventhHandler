@@ -17,3 +17,12 @@ limitations under the License.
 package msteam
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/bitnami-lab
