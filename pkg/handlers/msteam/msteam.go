@@ -49,4 +49,8 @@ var msTeamsColors = map[string]string{
 
 // Constants for Sending a Card
 const (
-	messageTy
+	messageType = "MessageCard"
+	context     = "http://schema.org/extensions"
+)
+
+// TeamsMessageCard is for the Card Fields to send in Tea
