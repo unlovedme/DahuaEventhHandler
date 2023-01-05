@@ -32,4 +32,7 @@ import (
 var msteamsErrMsg = `
 %s
 
-You need to set th
+You need to set the MS teams webhook URL,
+using --webhookURL, or using environment variables:
+
+export KW_MSTEAMS_WEBHOOKURL=web
