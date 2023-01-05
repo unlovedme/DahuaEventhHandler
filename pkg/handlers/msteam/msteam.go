@@ -35,4 +35,10 @@ var msteamsErrMsg = `
 You need to set the MS teams webhook URL,
 using --webhookURL, or using environment variables:
 
-export KW_MSTEAMS_WEBHOOKURL=web
+export KW_MSTEAMS_WEBHOOKURL=webhook_url
+
+Command line flags will override environment variables
+
+`
+
+var msTeamsColors = map[string]string{
