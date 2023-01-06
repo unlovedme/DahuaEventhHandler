@@ -59,4 +59,6 @@ type TeamsMessageCard struct {
 	Type       string                    `json:"@type"`
 	Context    string                    `json:"@context"`
 	ThemeColor string                    `json:"themeColor"`
-	Summary    string                    
+	Summary    string                    `json:"summary"`
+	Title      string                    `json:"title"`
+	Text       string                  
