@@ -61,4 +61,8 @@ type TeamsMessageCard struct {
 	ThemeColor string                    `json:"themeColor"`
 	Summary    string                    `json:"summary"`
 	Title      string                    `json:"title"`
-	Text       string                  
+	Text       string                    `json:"text,omitempty"`
+	Sections   []TeamsMessageCardSection `json:"sections"`
+}
+
+// TeamsMessageCardSection is placed un
