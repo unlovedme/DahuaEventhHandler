@@ -55,4 +55,6 @@ const (
 
 // TeamsMessageCard is for the Card Fields to send in Teams
 // The Documentation is in https://docs.microsoft.com/en-us/outlook/actionable-messages/card-reference#card-fields
-type T
+type TeamsMessageCard struct {
+	Type       string                    `json:"@type"`
+	Context    string                 
