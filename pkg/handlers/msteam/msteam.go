@@ -53,4 +53,6 @@ const (
 	context     = "http://schema.org/extensions"
 )
 
-// TeamsMessageCard is for the Card Fields to send in Tea
+// TeamsMessageCard is for the Card Fields to send in Teams
+// The Documentation is in https://docs.microsoft.com/en-us/outlook/actionable-messages/card-reference#card-fields
+type T
