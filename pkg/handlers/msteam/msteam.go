@@ -70,4 +70,8 @@ type TeamsMessageCard struct {
 type TeamsMessageCardSection struct {
 	ActivityTitle string                         `json:"activityTitle"`
 	Facts         []TeamsMessageCardSectionFacts `json:"facts"`
-	Markdown      bool                           `js
+	Markdown      bool                           `json:"markdown"`
+}
+
+// TeamsMessageCardSectionFacts is placed under TeamsMessageCardSection.Facts
+type TeamsMessageCardSectionFacts struc
