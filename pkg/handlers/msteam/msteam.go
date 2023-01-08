@@ -68,4 +68,6 @@ type TeamsMessageCard struct {
 // TeamsMessageCardSection is placed under TeamsMessageCard.Sections
 // Each element of AlertWebHook.Alerts will the number of elements of TeamsMessageCard.Sections to create
 type TeamsMessageCardSection struct {
-	ActivityTitle string                         `json:"activit
+	ActivityTitle string                         `json:"activityTitle"`
+	Facts         []TeamsMessageCardSectionFacts `json:"facts"`
+	Markdown      bool                           `js
