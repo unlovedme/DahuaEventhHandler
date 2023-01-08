@@ -74,4 +74,10 @@ type TeamsMessageCardSection struct {
 }
 
 // TeamsMessageCardSectionFacts is placed under TeamsMessageCardSection.Facts
-type TeamsMessageCardSectionFacts struc
+type TeamsMessageCardSectionFacts struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+}
+
+// Default handler implements Handler interface,
+// print each event with
