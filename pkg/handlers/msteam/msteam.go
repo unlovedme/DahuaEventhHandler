@@ -80,4 +80,7 @@ type TeamsMessageCardSectionFacts struct {
 }
 
 // Default handler implements Handler interface,
-// print each event with
+// print each event with JSON format
+type MSTeams struct {
+	// TeamsWebhookURL is the webhook url of the Teams connector
+	TeamsWebhookURL st
