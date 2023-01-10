@@ -83,4 +83,8 @@ type TeamsMessageCardSectionFacts struct {
 // print each event with JSON format
 type MSTeams struct {
 	// TeamsWebhookURL is the webhook url of the Teams connector
-	TeamsWebhookURL st
+	TeamsWebhookURL string
+}
+
+// sendCard sends the JSON Encoded TeamsMessageCard to the webhook URL
+func sendCard(ms *MSTeams, card *Teams
