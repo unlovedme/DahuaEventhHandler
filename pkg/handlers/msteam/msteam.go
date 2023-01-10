@@ -87,4 +87,6 @@ type MSTeams struct {
 }
 
 // sendCard sends the JSON Encoded TeamsMessageCard to the webhook URL
-func sendCard(ms *MSTeams, card *Teams
+func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
+	buffer := new(bytes.Buffer)
+	if err := json.NewEncoder(buffer).Encode(card); e
