@@ -92,4 +92,6 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 	if err := json.NewEncoder(buffer).Encode(card); err != nil {
 		return nil, fmt.Errorf("Failed encoding message card: %v", err)
 	}
-	res, err := http.Post(ms.TeamsWebhook
+	res, err := http.Post(ms.TeamsWebhookURL, "application/json", buffer)
+	if err != nil {
+		return nil, fmt.Errorf("Failed sending to webhook url %s. Got the error: %v"
