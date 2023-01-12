@@ -94,4 +94,9 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 	}
 	res, err := http.Post(ms.TeamsWebhookURL, "application/json", buffer)
 	if err != nil {
-		return nil, fmt.Errorf("Failed sending to webhook url %s. Got the error: %v"
+		return nil, fmt.Errorf("Failed sending to webhook url %s. Got the error: %v",
+			ms.TeamsWebhookURL, err)
+	}
+	if res.StatusCode != http.StatusOK {
+		resMessage, err := ioutil.ReadAll(res.Body)
+		if err != n
