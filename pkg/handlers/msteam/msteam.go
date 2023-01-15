@@ -102,4 +102,7 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 		if err != nil {
 			return nil, fmt.Errorf("Failed reading Teams http response: %v", err)
 		}
-		return nil, fmt.Errorf("Fai
+		return nil, fmt.Errorf("Failed sending to the Teams Channel. Teams http response: %s, %s",
+			res.Status, string(resMessage))
+	}
+	if err := res.Body.C
