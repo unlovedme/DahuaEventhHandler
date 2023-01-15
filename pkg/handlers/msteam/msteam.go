@@ -99,4 +99,7 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 	}
 	if res.StatusCode != http.StatusOK {
 		resMessage, err := ioutil.ReadAll(res.Body)
-		if err != n
+		if err != nil {
+			return nil, fmt.Errorf("Failed reading Teams http response: %v", err)
+		}
+		return nil, fmt.Errorf("Fai
