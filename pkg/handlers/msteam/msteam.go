@@ -112,4 +112,8 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 }
 
 // Init initializes handler configuration
-func (ms *MSTeam
+func (ms *MSTeams) Init(c *config.Config) error {
+	webhookURL := c.Handler.MSTeams.WebhookURL
+
+	if webhookURL == "" {
+		webhookURL = os.G
