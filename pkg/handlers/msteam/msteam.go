@@ -105,4 +105,11 @@ func sendCard(ms *MSTeams, card *TeamsMessageCard) (*http.Response, error) {
 		return nil, fmt.Errorf("Failed sending to the Teams Channel. Teams http response: %s, %s",
 			res.Status, string(resMessage))
 	}
-	if err := res.Body.C
+	if err := res.Body.Close(); err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+// Init initializes handler configuration
+func (ms *MSTeam
