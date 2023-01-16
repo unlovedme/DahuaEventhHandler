@@ -133,4 +133,5 @@ func (ms *MSTeams) Handle(e event.Event) {
 		Type:    messageType,
 		Context: context,
 		Title:   "kubewatch",
-		// Se
+		// Set a default Summary, this is required for Microsoft Teams
+		Summary: "kubewatch notification rec
