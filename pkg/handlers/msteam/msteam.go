@@ -128,4 +128,9 @@ func (ms *MSTeams) Init(c *config.Config) error {
 }
 
 // Handle handles notification.
-func (ms *MSTeams) Handle(e event.
+func (ms *MSTeams) Handle(e event.Event) {
+	card := &TeamsMessageCard{
+		Type:    messageType,
+		Context: context,
+		Title:   "kubewatch",
+		// Se
