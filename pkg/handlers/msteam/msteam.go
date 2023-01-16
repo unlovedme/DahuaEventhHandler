@@ -147,4 +147,7 @@ func (ms *MSTeams) Handle(e event.Event) {
 	if _, err := sendCard(ms, card); err != nil {
 		log.Printf("%s\n", err)
 		return
-	
+	}
+
+	log.Printf("Message successfully sent to MS Teams")
+}
