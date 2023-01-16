@@ -123,4 +123,9 @@ func (ms *MSTeams) Init(c *config.Config) error {
 		return fmt.Errorf(msteamsErrMsg, "Missing MS teams webhook URL")
 	}
 
-	
+	ms.TeamsWebhookURL = webhookURL
+	return nil
+}
+
+// Handle handles notification.
+func (ms *MSTeams) Handle(e event.
