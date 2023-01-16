@@ -134,4 +134,11 @@ func (ms *MSTeams) Handle(e event.Event) {
 		Context: context,
 		Title:   "kubewatch",
 		// Set a default Summary, this is required for Microsoft Teams
-		Summary: "kubewatch notification rec
+		Summary: "kubewatch notification received",
+	}
+
+	card.ThemeColor = msTeamsColors[e.Status]
+
+	var s TeamsMessageCardSection
+	s.ActivityTitle = e.Message()
+	s.Markdown = true
