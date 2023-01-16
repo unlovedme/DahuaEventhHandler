@@ -142,3 +142,9 @@ func (ms *MSTeams) Handle(e event.Event) {
 	var s TeamsMessageCardSection
 	s.ActivityTitle = e.Message()
 	s.Markdown = true
+	card.Sections = append(card.Sections, s)
+
+	if _, err := sendCard(ms, card); err != nil {
+		log.Printf("%s\n", err)
+		return
+	
