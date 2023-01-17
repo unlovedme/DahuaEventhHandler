@@ -15,4 +15,7 @@ import (
 // Tests the Init() function
 func TestInit(t *testing.T) {
 	s := &MSTeams{}
-	expect
+	expectedError := fmt.Errorf(msteamsErrMsg, "Missing MS teams webhook URL")
+
+	var Tests = []struct {
+		ms  config.M
