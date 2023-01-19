@@ -28,4 +28,11 @@ func TestInit(t *testing.T) {
 	for _, tt := range Tests {
 		c := &config.Config{}
 		c.Handler.MSTeams = tt.ms
-		if err := s.Init(c); !reflect.DeepEqual(err, t
+		if err := s.Init(c); !reflect.DeepEqual(err, tt.err) {
+			t.Fatalf("Init(): %v", err)
+		}
+	}
+}
+
+// Tests ObjectCreated() by passing v1.Pod
+func TestObjectCreated(t *t
