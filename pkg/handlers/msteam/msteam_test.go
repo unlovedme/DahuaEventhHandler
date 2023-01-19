@@ -25,4 +25,7 @@ func TestInit(t *testing.T) {
 		{config.MSTeams{}, expectedError},
 	}
 
-	for _,
+	for _, tt := range Tests {
+		c := &config.Config{}
+		c.Handler.MSTeams = tt.ms
+		if err := s.Init(c); !reflect.DeepEqual(err, t
