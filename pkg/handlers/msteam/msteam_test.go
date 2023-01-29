@@ -42,4 +42,7 @@ func TestObjectCreated(t *testing.T) {
 		ThemeColor: msTeamsColors["Normal"],
 		Summary:    "kubewatch notification received",
 		Title:      "kubewatch",
-		Text:      
+		Text:       "",
+		Sections: []TeamsMessageCardSection{
+			{
+				ActivityTitle: "A `pod` in namespace `new` has been `Create
