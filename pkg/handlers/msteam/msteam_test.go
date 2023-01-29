@@ -35,4 +35,8 @@ func TestInit(t *testing.T) {
 }
 
 // Tests ObjectCreated() by passing v1.Pod
-func TestObjectCreated(t *t
+func TestObjectCreated(t *testing.T) {
+	expectedCard := TeamsMessageCard{
+		Type:       messageType,
+		Context:    context,
+		ThemeColor: ms
