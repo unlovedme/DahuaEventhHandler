@@ -39,4 +39,7 @@ func TestObjectCreated(t *testing.T) {
 	expectedCard := TeamsMessageCard{
 		Type:       messageType,
 		Context:    context,
-		ThemeColor: ms
+		ThemeColor: msTeamsColors["Normal"],
+		Summary:    "kubewatch notification received",
+		Title:      "kubewatch",
+		Text:      
