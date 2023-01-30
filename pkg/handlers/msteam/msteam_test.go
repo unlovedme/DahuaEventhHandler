@@ -45,4 +45,10 @@ func TestObjectCreated(t *testing.T) {
 		Text:       "",
 		Sections: []TeamsMessageCardSection{
 			{
-				ActivityTitle: "A `pod` in namespace `new` has been `Create
+				ActivityTitle: "A `pod` in namespace `new` has been `Created`:\n`foo`",
+				Markdown:      true,
+			},
+		},
+	}
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http
