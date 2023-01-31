@@ -72,4 +72,11 @@ func TestObjectCreated(t *testing.T) {
 		Kind:      "pod",
 		Namespace: "new",
 		Reason:    "Created",
-		Status: 
+		Status:    "Normal",
+	}
+
+	ms.Handle(p)
+}
+
+// Tests ObjectDeleted() by passing v1.Pod
+func TestObjectDeleted(t
