@@ -66,4 +66,10 @@ func TestObjectCreated(t *testing.T) {
 		}
 	}))
 
-	ms := &MSTeams{TeamsWebhookURL: ts.U
+	ms := &MSTeams{TeamsWebhookURL: ts.URL}
+	p := event.Event{
+		Name:      "foo",
+		Kind:      "pod",
+		Namespace: "new",
+		Reason:    "Created",
+		Status: 
