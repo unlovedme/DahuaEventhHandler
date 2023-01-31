@@ -61,4 +61,9 @@ func TestObjectCreated(t *testing.T) {
 		if err := decoder.Decode(&c); err != nil {
 			t.Errorf("%v", err)
 		}
-		if !reflect.DeepEq
+		if !reflect.DeepEqual(c, expectedCard) {
+			t.Errorf("expected %v, got %v", expectedCard, c)
+		}
+	}))
+
+	ms := &MSTeams{TeamsWebhookURL: ts.U
