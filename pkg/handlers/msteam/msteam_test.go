@@ -57,4 +57,8 @@ func TestObjectCreated(t *testing.T) {
 			t.Errorf("expected a POST request for ObjectCreated()")
 		}
 		decoder := json.NewDecoder(r.Body)
-		var c TeamsMessa
+		var c TeamsMessageCard
+		if err := decoder.Decode(&c); err != nil {
+			t.Errorf("%v", err)
+		}
+		if !reflect.DeepEq
