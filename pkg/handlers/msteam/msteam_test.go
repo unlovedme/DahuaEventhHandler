@@ -83,4 +83,8 @@ func TestObjectDeleted(t *testing.T) {
 	expectedCard := TeamsMessageCard{
 		Type:       messageType,
 		Context:    context,
-		ThemeColor: msTeamsColor
+		ThemeColor: msTeamsColors["Danger"],
+		Summary:    "kubewatch notification received",
+		Title:      "kubewatch",
+		Text:       "",
+		Sectio
