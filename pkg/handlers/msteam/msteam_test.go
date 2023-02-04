@@ -90,4 +90,9 @@ func TestObjectDeleted(t *testing.T) {
 		Sections: []TeamsMessageCardSection{
 			{
 				ActivityTitle: "A `pod` in namespace `new` has been `Deleted`:\n`foo`",
-				Markdo
+				Markdown:      true,
+			},
+		},
+	}
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *htt
