@@ -87,4 +87,7 @@ func TestObjectDeleted(t *testing.T) {
 		Summary:    "kubewatch notification received",
 		Title:      "kubewatch",
 		Text:       "",
-		Sectio
+		Sections: []TeamsMessageCardSection{
+			{
+				ActivityTitle: "A `pod` in namespace `new` has been `Deleted`:\n`foo`",
+				Markdo
