@@ -106,4 +106,11 @@ func TestObjectDeleted(t *testing.T) {
 			t.Errorf("%v", err)
 		}
 		if !reflect.DeepEqual(c, expectedCard) {
-			t.Errorf("expected 
+			t.Errorf("expected %v, got %v", expectedCard, c)
+		}
+	}))
+
+	ms := &MSTeams{TeamsWebhookURL: ts.URL}
+
+	p := event.Event{
+		Name:      "foo",
