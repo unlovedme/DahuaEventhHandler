@@ -98,4 +98,8 @@ func TestObjectDeleted(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		if r.Method != "POST" {
-			t.Errorf("expected a POST request for 
+			t.Errorf("expected a POST request for ObjectDeleted()")
+		}
+		decoder := json.NewDecoder(r.Body)
+		var c TeamsMessageCard
+		if err := decoder
