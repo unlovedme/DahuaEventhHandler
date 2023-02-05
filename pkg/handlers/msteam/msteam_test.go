@@ -102,4 +102,8 @@ func TestObjectDeleted(t *testing.T) {
 		}
 		decoder := json.NewDecoder(r.Body)
 		var c TeamsMessageCard
-		if err := decoder
+		if err := decoder.Decode(&c); err != nil {
+			t.Errorf("%v", err)
+		}
+		if !reflect.DeepEqual(c, expectedCard) {
+			t.Errorf("expected 
