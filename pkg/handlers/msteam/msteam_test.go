@@ -126,4 +126,7 @@ func TestObjectDeleted(t *testing.T) {
 // Tests ObjectUpdated() by passing v1.Pod
 func TestObjectUpdated(t *testing.T) {
 	expectedCard := TeamsMessageCard{
-		Type
+		Type:       messageType,
+		Context:    context,
+		ThemeColor: msTeamsColors["Warning"],
+		Summary:    "kube
