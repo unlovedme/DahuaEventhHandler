@@ -114,3 +114,13 @@ func TestObjectDeleted(t *testing.T) {
 
 	p := event.Event{
 		Name:      "foo",
+		Namespace: "new",
+		Kind:      "pod",
+		Reason:    "Deleted",
+		Status:    "Danger",
+	}
+
+	ms.Handle(p)
+}
+
+// Tests ObjectUp
