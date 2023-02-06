@@ -129,4 +129,7 @@ func TestObjectUpdated(t *testing.T) {
 		Type:       messageType,
 		Context:    context,
 		ThemeColor: msTeamsColors["Warning"],
-		Summary:    "kube
+		Summary:    "kubewatch notification received",
+		Title:      "kubewatch",
+		Text:       "",
+		Sections: []TeamsMessageCardSection
