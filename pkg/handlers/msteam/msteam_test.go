@@ -132,4 +132,9 @@ func TestObjectUpdated(t *testing.T) {
 		Summary:    "kubewatch notification received",
 		Title:      "kubewatch",
 		Text:       "",
-		Sections: []TeamsMessageCardSection
+		Sections: []TeamsMessageCardSection{
+			{
+				ActivityTitle: "A `pod` in namespace `new` has been `Updated`:\n`foo`",
+				Markdown:      true,
+			},
+		},
