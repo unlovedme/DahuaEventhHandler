@@ -123,4 +123,7 @@ func TestObjectDeleted(t *testing.T) {
 	ms.Handle(p)
 }
 
-// Tests ObjectUp
+// Tests ObjectUpdated() by passing v1.Pod
+func TestObjectUpdated(t *testing.T) {
+	expectedCard := TeamsMessageCard{
+		Type
