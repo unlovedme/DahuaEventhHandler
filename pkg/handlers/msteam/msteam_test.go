@@ -145,4 +145,6 @@ func TestObjectUpdated(t *testing.T) {
 		if r.Method != "POST" {
 			t.Errorf("expected a POST request for ObjectUpdated()")
 		}
-		
+		decoder := json.NewDecoder(r.Body)
+		var c TeamsMessageCard
+		if err := decoder.Decode(&c); err !
