@@ -151,4 +151,12 @@ func TestObjectUpdated(t *testing.T) {
 			t.Errorf("%v", err)
 		}
 		if !reflect.DeepEqual(c, expectedCard) {
-			t.Errorf("expected %v, got %v", expect
+			t.Errorf("expected %v, got %v", expectedCard, c)
+		}
+	}))
+
+	ms := &MSTeams{TeamsWebhookURL: ts.URL}
+
+	oldP := event.Event{
+		Name:      "foo",
+		Namespace:
