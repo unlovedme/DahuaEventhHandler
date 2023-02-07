@@ -159,4 +159,11 @@ func TestObjectUpdated(t *testing.T) {
 
 	oldP := event.Event{
 		Name:      "foo",
-		Namespace:
+		Namespace: "new",
+		Kind:      "pod",
+		Reason:    "Updated",
+		Status:    "Warning",
+	}
+
+	newP := event.Event{
+		Name:
