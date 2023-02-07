@@ -172,4 +172,7 @@ func TestObjectUpdated(t *testing.T) {
 		Reason:    "Updated",
 		Status:    "Warning",
 	}
-	_
+	_ = newP
+
+	ms.Handle(oldP)
+}
