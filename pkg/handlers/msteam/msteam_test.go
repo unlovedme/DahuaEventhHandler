@@ -138,3 +138,7 @@ func TestObjectUpdated(t *testing.T) {
 				Markdown:      true,
 			},
 		},
+	}
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http
