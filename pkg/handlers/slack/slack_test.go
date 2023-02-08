@@ -32,4 +32,6 @@ func TestSlackInit(t *testing.T) {
 		slack config.Slack
 		err   error
 	}{
-	
+		{config.Slack{Token: "foo", Channel: "bar"}, nil},
+		{config.Slack{Token: "foo"}, expectedError},
+		{config.Sla
