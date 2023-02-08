@@ -79,3 +79,50 @@ func (s *Slack) Init(c *config.Config) error {
 	s.Token = token
 	s.Channel = channel
 	s.Title = title
+
+	return checkMissingSlackVars(s)
+}
+
+// Handle handles the notification.
+func (s *Slack) Handle(e event.Event) {
+	api := slack.New(s.Token)
+	attachment := prepareSlackAttachment(e, s)
+
+	channelID, timestamp, err := api.PostMessage(s.Channel,
+		slack.MsgOptionAttachments(attachment),
+		slack.MsgOptionAsUser(true))
+	if err != nil {
+		log.Printf("%s\n", err)
+		return
+	}
+
+	log.Printf("Message successfully sent to channel %s at %s", channelID, timestamp)
+}
+
+func checkMissingSlackVars(s *Slack) error {
+	if s.Token == "" || s.Channel == "" {
+		return fmt.Errorf(slackErrMsg, "Missing slack token or channel")
+	}
+
+	return nil
+}
+
+func prepareSlackAttachment(e event.Event, s *Slack) slack.Attachment {
+
+	attachment := slack.Attachment{
+		Fields: []slack.AttachmentField{
+			{
+				Title: s.Title,
+				Value: e.Message(),
+			},
+		},
+	}
+
+	if color, ok := slackColors[e.Status]; ok {
+		attachment.Color = color
+	}
+
+	attachment.MarkdownIn = []string{"fields"}
+
+	return attachment
+}
