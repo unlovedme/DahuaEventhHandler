@@ -26,4 +26,10 @@ import (
 
 func TestSlackInit(t *testing.T) {
 	s := &Slack{}
-	expectedError := fmt.Error
+	expectedError := fmt.Errorf(slackErrMsg, "Missing slack token or channel")
+
+	var Tests = []struct {
+		slack config.Slack
+		err   error
+	}{
+	
