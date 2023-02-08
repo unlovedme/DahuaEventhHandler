@@ -21,4 +21,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/b
+	"github.com/bitnami-labs/kubewatch/config"
+)
+
+func TestSlackInit(t *testing.T) {
+	s := &Slack{}
+	expectedError := fmt.Error
