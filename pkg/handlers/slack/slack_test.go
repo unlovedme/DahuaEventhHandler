@@ -41,4 +41,8 @@ func TestSlackInit(t *testing.T) {
 	for _, tt := range Tests {
 		c := &config.Config{}
 		c.Handler.Slack = tt.slack
-		if err := s.Init(c); !reflect.DeepEqual(err
+		if err := s.Init(c); !reflect.DeepEqual(err, tt.err) {
+			t.Fatalf("Init(): %v", err)
+		}
+	}
+}
