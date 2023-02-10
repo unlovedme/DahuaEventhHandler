@@ -34,4 +34,8 @@ func TestSlackInit(t *testing.T) {
 	}{
 		{config.Slack{Token: "foo", Channel: "bar"}, nil},
 		{config.Slack{Token: "foo"}, expectedError},
-		{config.Sla
+		{config.Slack{Channel: "bar"}, expectedError},
+		{config.Slack{}, expectedError},
+	}
+
+	for _, tt := range Test
