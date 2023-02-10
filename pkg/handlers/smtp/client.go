@@ -88,3 +88,119 @@ func sendEmail(conf config.SMTP, msg string) error {
 		// Try to clean up after ourselves but don't log anything if something has failed.
 		if err := c.Quit(); success && err != nil {
 			logrus.Warnf("failed to close SMTP connection: %v", err)
+		}
+	}()
+
+	if conf.Hello != "" {
+		err = c.Hello(conf.Hello)
+		if err != nil {
+			return fmt.Errorf("send EHLO command: %w", err)
+		}
+	}
+
+	// Global Config guarantees RequireTLS is not nil.
+	if conf.RequireTLS {
+		if ok, _ := c.Extension("STARTTLS"); !ok {
+			return fmt.Errorf("'require_tls' is true (default) but %q does not advertise the STARTTLS extension", conf.Smarthost)
+		}
+		if tlsConfig.ServerName == "" {
+			tlsConfig.ServerName = host
+		}
+
+		if err := c.StartTLS(tlsConfig); err != nil {
+			return fmt.Errorf("send STARTTLS command: %w", err)
+		}
+	}
+
+	if ok, mech := c.Extension("AUTH"); ok {
+		auth, err := auth(conf.Auth, host, mech)
+		if err != nil {
+			return fmt.Errorf("find auth mechanism: %w", err)
+		}
+		if auth != nil {
+			if err := c.Auth(auth); err != nil {
+				return fmt.Errorf("%T auth: %w", auth, err)
+			}
+		}
+	}
+
+	addrs, err := mail.ParseAddressList(conf.From)
+	if err != nil {
+		return fmt.Errorf("parse 'from' addresses: %w", err)
+	}
+	if len(addrs) != 1 {
+		return fmt.Errorf("must be exactly one 'from' address (got: %d)", len(addrs))
+	}
+	if err = c.Mail(addrs[0].Address); err != nil {
+		return fmt.Errorf("send MAIL command: %w", err)
+	}
+	addrs, err = mail.ParseAddressList(conf.To)
+	if err != nil {
+		return fmt.Errorf("parse 'to' addresses: %w", err)
+	}
+	for _, addr := range addrs {
+		if err = c.Rcpt(addr.Address); err != nil {
+			return fmt.Errorf("send RCPT command: %w", err)
+		}
+	}
+
+	// Send the email headers and body.
+	message, err := c.Data()
+	if err != nil {
+		return fmt.Errorf("send DATA command: %w", err)
+	}
+	defer message.Close()
+
+	if conf.Headers == nil {
+		conf.Headers = map[string]string{}
+	}
+	if _, ok := conf.Headers["Subject"]; !ok {
+		s := conf.Subject
+		if s == "" {
+			s = defaultSubject
+		}
+		conf.Headers["Subject"] = s
+	}
+	if _, ok := conf.Headers["To"]; !ok {
+		conf.Headers["To"] = conf.To
+	}
+	if _, ok := conf.Headers["From"]; !ok {
+		conf.Headers["From"] = conf.From
+	}
+
+	buffer := &bytes.Buffer{}
+	for header, value := range conf.Headers {
+		fmt.Fprintf(buffer, "%s: %s\r\n", header, mime.QEncoding.Encode("utf-8", value))
+	}
+
+	hostname, err := os.Hostname()
+	if err != nil {
+		return err
+	}
+	if _, ok := conf.Headers["Message-Id"]; !ok {
+		fmt.Fprintf(buffer, "Message-Id: %s\r\n", fmt.Sprintf("<%d.%d@%s>", time.Now().UnixNano(), rand.Uint64(), hostname))
+	}
+
+	multipartBuffer := &bytes.Buffer{}
+	multipartWriter := multipart.NewWriter(multipartBuffer)
+
+	fmt.Fprintf(buffer, "Date: %s\r\n", time.Now().Format(time.RFC1123Z))
+	fmt.Fprintf(buffer, "Content-Type: multipart/alternative;  boundary=%s\r\n", multipartWriter.Boundary())
+	fmt.Fprintf(buffer, "MIME-Version: 1.0\r\n\r\n")
+
+	_, err = message.Write(buffer.Bytes())
+	if err != nil {
+		return fmt.Errorf("write headers: %w", err)
+	}
+	w, err := multipartWriter.CreatePart(textproto.MIMEHeader{
+		"Content-Transfer-Encoding": {"quoted-printable"},
+		"Content-Type":              {"text/plain; charset=UTF-8"},
+	})
+	if err != nil {
+		return fmt.Errorf("create part for text template: %w", err)
+	}
+
+	qw := quotedprintable.NewWriter(w)
+	_, err = qw.Write([]byte(msg))
+	if err != nil {
+		return fmt.Errorf("write text part: %w", err)
