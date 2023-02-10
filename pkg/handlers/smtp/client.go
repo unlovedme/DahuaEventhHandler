@@ -204,3 +204,94 @@ func sendEmail(conf config.SMTP, msg string) error {
 	_, err = qw.Write([]byte(msg))
 	if err != nil {
 		return fmt.Errorf("write text part: %w", err)
+	}
+	err = qw.Close()
+	if err != nil {
+		return fmt.Errorf("close text part: %w", err)
+	}
+
+	err = multipartWriter.Close()
+	if err != nil {
+		return fmt.Errorf("close multipartWriter: %w", err)
+
+	}
+
+	_, err = message.Write(multipartBuffer.Bytes())
+	if err != nil {
+		return fmt.Errorf("write body buffer: %w", err)
+	}
+
+	log.Printf("sending via %s:%s, to: %q, from: %q : %s ", host, port, conf.To, conf.From, msg)
+	return nil
+}
+
+func auth(conf config.SMTPAuth, host, mechs string) (smtp.Auth, error) {
+	username := conf.Username
+
+	// If no username is set, keep going without authentication.
+	if username == "" {
+		logrus.Debugf("smtp_auth_username is not configured. Attempting to send email without authenticating")
+		return nil, nil
+	}
+
+	var errs []error
+	for _, mech := range strings.Split(mechs, " ") {
+		switch mech {
+		case "CRAM-MD5":
+			secret := string(conf.Secret)
+			if secret == "" {
+				errs = append(errs, fmt.Errorf("missing secret for CRAM-MD5 auth mechanism"))
+				continue
+			}
+			return smtp.CRAMMD5Auth(username, secret), nil
+
+		case "PLAIN":
+			password := string(conf.Password)
+			if password == "" {
+				errs = append(errs, fmt.Errorf("missing password for PLAIN auth mechanism"))
+				continue
+			}
+			identity := conf.Identity
+
+			return smtp.PlainAuth(identity, username, password, host), nil
+		case "LOGIN":
+			password := string(conf.Password)
+			if password == "" {
+				errs = append(errs, fmt.Errorf("missing password for LOGIN auth mechanism"))
+				continue
+			}
+			return LoginAuth(username, password), nil
+		}
+	}
+	if len(errs) == 0 {
+		errs = append(errs, fmt.Errorf("unknown auth mechanism: %q", mechs))
+	}
+	return nil, multierror.Join(errs)
+}
+
+type loginAuth struct {
+	username, password string
+}
+
+func LoginAuth(username, password string) smtp.Auth {
+	return &loginAuth{username, password}
+}
+
+func (a *loginAuth) Start(server *smtp.ServerInfo) (string, []byte, error) {
+	return "LOGIN", []byte{}, nil
+}
+
+// Used for AUTH LOGIN. (Maybe password should be encrypted)
+func (a *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
+	if more {
+		switch strings.ToLower(string(fromServer)) {
+		case "username:":
+			return []byte(a.username), nil
+		case "password:":
+			return []byte(a.password), nil
+		default:
+			return nil, fmt.Errorf("unexpected server challenge")
+		}
+	}
+	return nil, nil
+}
