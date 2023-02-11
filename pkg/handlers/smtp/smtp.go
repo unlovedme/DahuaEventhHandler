@@ -15,4 +15,10 @@ limitations under the License.
 */
 
 /*
-Package smtp impleme
+Package smtp implements an email notification handler for kubewatch.
+
+See example configuration in the ConfigExample constant.
+*/
+package smtp
+
+imp
