@@ -35,4 +35,8 @@ const (
 	defaultSubject = "Kubewatch notification"
 
 	// ConfigExample is an example configuration.
-	ConfigExamp
+	ConfigExample = `handler:
+  smtp:
+    to: "myteam@mycompany.com"
+    from: "kubewatch@mycluster.com"
+    smarthost: smtp.mycompany.com:2
