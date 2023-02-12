@@ -39,4 +39,9 @@ const (
   smtp:
     to: "myteam@mycompany.com"
     from: "kubewatch@mycluster.com"
-    smarthost: smtp.mycompany.com:2
+    smarthost: smtp.mycompany.com:2525
+    subject: Test notification
+    auth:
+      username: myusername
+      password: mypassword
+    requi
