@@ -28,4 +28,11 @@ import (
 
 	"github.com/bitnami-labs/kubewatch/config"
 	"github.com/bitnami-labs/kubewatch/pkg/event"
-	"git
+	"github.com/sirupsen/logrus"
+)
+
+const (
+	defaultSubject = "Kubewatch notification"
+
+	// ConfigExample is an example configuration.
+	ConfigExamp
