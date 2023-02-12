@@ -21,4 +21,11 @@ See example configuration in the ConfigExample constant.
 */
 package smtp
 
-imp
+import (
+	"fmt"
+	"log"
+	"time"
+
+	"github.com/bitnami-labs/kubewatch/config"
+	"github.com/bitnami-labs/kubewatch/pkg/event"
+	"git
