@@ -44,4 +44,10 @@ const (
     auth:
       username: myusername
       password: mypassword
-    requi
+    requireTLS: true
+`
+)
+
+// SMTP handler implements handler.Handler interface,
+// Notify event via email.
+type S
