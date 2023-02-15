@@ -59,4 +59,9 @@ func (s *SMTP) Init(c *config.Config) error {
 	s.cfg = c.Handler.SMTP
 
 	if s.cfg.To == "" {
-		return fmt.Errorf("smtp `to` conf field is required"
+		return fmt.Errorf("smtp `to` conf field is required")
+	}
+	if s.cfg.From == "" {
+		return fmt.Errorf("smtp `from` conf field is required")
+	}
+	if s.cfg.Smarthost == ""
