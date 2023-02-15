@@ -50,4 +50,9 @@ const (
 
 // SMTP handler implements handler.Handler interface,
 // Notify event via email.
-type S
+type SMTP struct {
+	cfg config.SMTP
+}
+
+// Init prepares Webhook configuration
+func (s *SMTP) Ini
