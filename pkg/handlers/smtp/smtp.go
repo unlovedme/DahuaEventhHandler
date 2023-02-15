@@ -55,4 +55,8 @@ type SMTP struct {
 }
 
 // Init prepares Webhook configuration
-func (s *SMTP) Ini
+func (s *SMTP) Init(c *config.Config) error {
+	s.cfg = c.Handler.SMTP
+
+	if s.cfg.To == "" {
+		return fmt.Errorf("smtp `to` conf field is required"
