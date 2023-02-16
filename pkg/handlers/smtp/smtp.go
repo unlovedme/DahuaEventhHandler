@@ -71,4 +71,6 @@ func (s *SMTP) Init(c *config.Config) error {
 }
 
 // Handle handles the notification.
-fun
+func (s *SMTP) Handle(e event.Event) {
+	send(s.cfg, e.Message())
+	log.Printf("Message successfully sent to
