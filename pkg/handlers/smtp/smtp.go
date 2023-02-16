@@ -80,4 +80,8 @@ func formatEmail(e event.Event) (string, error) {
 	return e.Message(), nil
 }
 
-func send(conf con
+func send(conf config.SMTP, msg string) {
+	if err := sendEmail(conf, msg); err != nil {
+		logrus.Error(err)
+	}
+}
