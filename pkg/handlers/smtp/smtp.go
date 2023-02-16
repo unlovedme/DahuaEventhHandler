@@ -64,4 +64,11 @@ func (s *SMTP) Init(c *config.Config) error {
 	if s.cfg.From == "" {
 		return fmt.Errorf("smtp `from` conf field is required")
 	}
-	if s.cfg.Smarthost == ""
+	if s.cfg.Smarthost == "" {
+		return fmt.Errorf("smtp `smarthost` conf field is required")
+	}
+	return nil
+}
+
+// Handle handles the notification.
+fun
