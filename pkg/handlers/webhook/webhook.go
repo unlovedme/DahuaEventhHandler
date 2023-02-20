@@ -89,3 +89,45 @@ func (m *Webhook) Handle(e event.Event) {
 
 	log.Printf("Message successfully sent to %s at %s ", m.Url, time.Now())
 }
+
+func checkMissingWebhookVars(s *Webhook) error {
+	if s.Url == "" {
+		return fmt.Errorf(webhookErrMsg, "Missing Webhook url")
+	}
+
+	return nil
+}
+
+func prepareWebhookMessage(e event.Event, m *Webhook) *WebhookMessage {
+	return &WebhookMessage{
+		EventMeta: EventMeta{
+			Kind:      e.Kind,
+			Name:      e.Name,
+			Namespace: e.Namespace,
+			Reason:    e.Reason,
+		},
+		Text: e.Message(),
+		Time: time.Now(),
+	}
+}
+
+func postMessage(url string, webhookMessage *WebhookMessage) error {
+	message, err := json.Marshal(webhookMessage)
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(message))
+	if err != nil {
+		return err
+	}
+	req.Header.Add("Content-Type", "application/json")
+
+	client := &http.Client{}
+	_, err = client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
