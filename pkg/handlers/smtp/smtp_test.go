@@ -20,4 +20,5 @@ import (
 	"testing"
 )
 
-func T
+func TestSMTP(t *testing.T) {
+	// TODO(mkmik): setup a in-memory smtp server like https://github.com/b
