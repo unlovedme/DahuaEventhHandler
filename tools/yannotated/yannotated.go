@@ -111,3 +111,87 @@ func emit(w io.Writer, types map[string]*ast.StructType, node *ast.StructType) e
 			default:
 				t, found := types[name]
 				if !found {
+					return fmt.Errorf("cannot find type %q", name)
+				}
+				fmt.Fprintf(w, "\n")
+				iw := textio.NewPrefixWriter(w, "  ")
+				if err := emit(iw, types, t); err != nil {
+					return err
+				}
+			}
+		case *ast.MapType:
+			fmt.Fprintf(w, " {}\n")
+		default:
+			return fmt.Errorf("unsupported field type: %T (%s)", field.Type, field.Type)
+		}
+	}
+	return nil
+}
+
+func fieldName(field *ast.Field) (string, error) {
+	if field.Tag != nil {
+		// remove backticks
+		clean := field.Tag.Value[1 : len(field.Tag.Value)-1]
+		tags, err := structtag.Parse(clean)
+		if err != nil {
+			return "", fmt.Errorf("while parsing %q: %w", clean, err)
+		}
+
+		var yamlName, jsonName string
+		for _, tag := range tags.Tags() {
+			switch tag.Key {
+			case "json":
+				jsonName = tag.Name
+			case "yaml":
+				yamlName = tag.Name
+			}
+		}
+		if yamlName != "" {
+			return yamlName, nil
+		}
+		if jsonName != "" {
+			return jsonName, nil
+		}
+	}
+	if got, want := len(field.Names), 1; got != want {
+		return "", fmt.Errorf("unsupported number of struct field names, got: %d, want: %d", got, want)
+	}
+
+	return strings.ToLower(field.Names[0].Name), nil
+}
+
+func collectTypes(n ast.Node) map[string]*ast.StructType {
+	v := typeCollectingVisitor(map[string]*ast.StructType{})
+	ast.Walk(v, n)
+	return v
+}
+
+type typeCollectingVisitor map[string]*ast.StructType
+
+func (v typeCollectingVisitor) Visit(node ast.Node) (w ast.Visitor) {
+	switch n := node.(type) {
+	case *ast.TypeSpec:
+		if t, ok := n.Type.(*ast.StructType); ok {
+			v[n.Name.Name] = t
+		}
+	case *ast.Package:
+		return v
+	case *ast.File:
+		return v
+	case *ast.GenDecl:
+		if n.Tok == token.TYPE {
+			return v
+		}
+	}
+	return nil
+}
+
+func main() {
+	var flags Flags
+	flags.Bind(nil)
+	flag.Parse()
+
+	if err := mainE(flags); err != nil {
+		log.Fatal(err)
+	}
+}
