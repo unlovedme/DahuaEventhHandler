@@ -62,3 +62,32 @@ func GetObjectMetaData(obj interface{}) (objectMeta meta_v1.ObjectMeta) {
 		objectMeta = object.ObjectMeta
 	case *api_v1.ReplicationController:
 		objectMeta = object.ObjectMeta
+	case *apps_v1.ReplicaSet:
+		objectMeta = object.ObjectMeta
+	case *apps_v1.DaemonSet:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Service:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Pod:
+		objectMeta = object.ObjectMeta
+	case *batch_v1.Job:
+		objectMeta = object.ObjectMeta
+	case *api_v1.PersistentVolume:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Namespace:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Secret:
+		objectMeta = object.ObjectMeta
+	case *ext_v1beta1.Ingress:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Node:
+		objectMeta = object.ObjectMeta
+	case *rbac_v1beta1.ClusterRole:
+		objectMeta = object.ObjectMeta
+	case *api_v1.ServiceAccount:
+		objectMeta = object.ObjectMeta
+	case *api_v1.Event:
+		objectMeta = object.ObjectMeta
+	}
+	return objectMeta
+}
