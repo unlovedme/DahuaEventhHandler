@@ -60,4 +60,10 @@ quz: {}
 		t.Fatal(err)
 	}
 
-	if got := str
+	if got := string(b); got != want {
+		t.Fatalf("got:\n%s\nwant:\n%s", got, want)
+	}
+}
+
+func TestGo(t *testing.T) {
+	tmp, err := ioutil.TempFile(""
