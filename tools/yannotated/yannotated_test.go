@@ -51,4 +51,13 @@ bar:
   baz: 0
 # Rebar is another bar.
 rebar:
-  # B
+  # Baz is baz.
+  baz: 0
+quz: {}
+`
+	b, err := ioutil.ReadFile(tmp.Name())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if got := str
