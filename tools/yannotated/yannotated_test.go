@@ -25,4 +25,12 @@ type Bar struct {
 }
 
 func TestMain(t *testing.T) {
-	tmp, err := ioutil.TempFile(""
+	tmp, err := ioutil.TempFile("", "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	tmp.Close()
+	defer os.RemoveAll(tmp.Name())
+
+	err = mainE(Flags{
+		Dir
