@@ -33,4 +33,13 @@ func TestMain(t *testing.T) {
 	defer os.RemoveAll(tmp.Name())
 
 	err = mainE(Flags{
-		Dir
+		Dir:     ".",
+		Package: "main",
+		Type:    "Config",
+		Output:  tmp.Name(),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	want := `# Fo
