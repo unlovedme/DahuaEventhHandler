@@ -18,4 +18,11 @@ type Config struct {
 	Quz   map[string]string
 }
 
-// Bar is a str
+// Bar is a struct.
+type Bar struct {
+	// Baz is baz.
+	Baz int `yaml:"baz"`
+}
+
+func TestMain(t *testing.T) {
+	tmp, err := ioutil.TempFile(""
