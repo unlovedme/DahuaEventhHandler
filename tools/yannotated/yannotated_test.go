@@ -42,4 +42,13 @@ func TestMain(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	want := `# Fo
+	want := `# Foo is foo.
+foo: ""
+# Bar is bar.
+# So useful.
+bar:
+  # Baz is baz.
+  baz: 0
+# Rebar is another bar.
+rebar:
+  # B
