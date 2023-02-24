@@ -84,4 +84,10 @@ func TestGo(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	want :=
+	want := `package main
+
+var yannotated = ` + "`" + `# Baz is baz.
+baz: 0
+` + "`\n"
+
+	b, err := ioutil.ReadFile(tmp.Nam
