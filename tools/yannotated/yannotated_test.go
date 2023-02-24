@@ -90,4 +90,12 @@ var yannotated = ` + "`" + `# Baz is baz.
 baz: 0
 ` + "`\n"
 
-	b, err := ioutil.ReadFile(tmp.Nam
+	b, err := ioutil.ReadFile(tmp.Name())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if got := string(b); got != want {
+		t.Fatalf("got:\n%s\nwant:\n%s", got, want)
+	}
+}
