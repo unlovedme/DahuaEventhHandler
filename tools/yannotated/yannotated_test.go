@@ -75,4 +75,13 @@ func TestGo(t *testing.T) {
 
 	err = mainE(Flags{
 		Dir:     ".",
-		Packag
+		Package: "main",
+		Type:    "Bar",
+		Output:  tmp.Name(),
+		Format:  GoFormat,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	want :=
